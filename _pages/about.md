@@ -3,9 +3,7 @@ title: 'Why I started this Blog?'
 permalink: /about/
 ---
 The idea behind starting my Blog is to share my experience acquired while
-working in the computer science and to share my ideas in my greatest hobby:
-the card game bridge. And of course to talk about the countries I have lived
-in: the Netherlands and France.
+working in the computer science.
 
 <!--more-->
 

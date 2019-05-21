@@ -32,14 +32,14 @@ twitter_username     : gert.jan.paulissen@gmail.com
 github_username      : gpaulissen
 minimal_mistakes_skin: default
 search               : true
-url                  : 'https://gpaulissen.github.io'
-repository           : gpaulissen/gpaulissen.github.io
+url                  : 'https://gpaulissen.github.io/blog'
+repository           : gpaulissen/blog
 baseurl              : ''
 highlighter          : rouge
 encoding             : utf-8
 destination          : _site
 lang                 : 'en'             # The language setting is used in /includes/header.html for html-settings
-locale               : 'nl'
+locale               : 'en'
 
 # Build settings
 markdown             : kramdown
@@ -54,7 +54,6 @@ timezone             : CET
 
 include:
   - _pages
-  - nl
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -97,14 +96,11 @@ exclude:
 author:
   name   : "Gert-Jan Paulissen"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "Working in the computer industry, playing bridge and living in France as a Dutch guy married with a French girl."
+  bio    : "Working in the computer industry"
   links:
     - label: "About"
       icon: "fas fa-fw fa-link"
       url: "/about"
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook"
-      url: "https://www.facebook.com/gertjan.paulissen"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/gpaulissen"
@@ -114,9 +110,6 @@ author:
   
 footer:
   links:
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook"
-      url: "https://www.facebook.com/gertjan.paulissen"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/gpaulissen"
@@ -148,7 +141,6 @@ defaults:
       share: true
       related: true
       sitemap: true
-      lang: en
   # _pages
   - scope:
       path: "_pages"
@@ -157,7 +149,6 @@ defaults:
       layout: single
       author_profile: true
       sitemap: true
-      lang: en
 
 comments:
   provider: "custom"

@@ -7,9 +7,11 @@ gem 'jekyll', '3.7.4'
 
 jekyll_env = ENV['JEKYLL_ENV'] || 'development'
 
-if jekyll_env ==  'development'
+if jekyll_env == 'development'
 then
   gem "minimal-mistakes-jekyll"
+  gem 'html-proofer'
+  gem 'rake'
 end
 gem "github-pages", group: :jekyll_plugins
 
