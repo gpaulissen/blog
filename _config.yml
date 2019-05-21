@@ -162,3 +162,5 @@ tag_archive:
 
 # Frontpage-Layout-Settings
 excerpt_separator: <!--more-->   # Use <!--more--> in your posts to generate an excerpt and a teaser
+
+theme: jekyll-theme-minimal
