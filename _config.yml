@@ -32,9 +32,9 @@ twitter_username     : gert.jan.paulissen@gmail.com
 github_username      : gpaulissen
 minimal_mistakes_skin: default
 search               : true
-url                  : 'https://gpaulissen.github.io/blog'
+url                  : 'https://gpaulissen.github.io'
 repository           : gpaulissen/blog
-baseurl              : ''
+baseurl              : '/blog'
 highlighter          : rouge
 encoding             : utf-8
 destination          : _site
@@ -100,7 +100,7 @@ author:
   links:
     - label: "About"
       icon: "fas fa-fw fa-link"
-      url: "/about"
+      url: "/blog/about"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/gpaulissen"
