@@ -6,7 +6,7 @@ sitemap: false
 Please leave your email address and comment here.
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<form action="https://usebasin.com/f/adee134b6f9e" method="POST">
+<form action="https://usebasin.com/f/465f256e7a9c" method="POST">
     <label>{{ site.data.ui-text[site.locale].comment_form_email_label }}
         <input type="email" id="email" name="email" required>
     </label>
