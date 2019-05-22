@@ -22,7 +22,7 @@ to automated testing with Java, Cucumber and Selenium. Really interesting
 stuff and the client was very happy with it but after a month of silence my
 career change manager (actually my career manager, but I changed my career
 thanks to him) told me I could publish something in the private Sogeti
-domain. Not actually the answer I wanted so when a very interesting
+domain. Not actually the answer I was looking for so when a very interesting
 opportunity came up to change my career, I took it with both hands.
 
 And the pause between the two employers gave me the time to finally start my

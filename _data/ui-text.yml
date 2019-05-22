@@ -19,29 +19,42 @@
 # -----------------
 # More on Accesskeys › http://www.cs.tut.fi/~jkorpela/forms/accesskey.html
 en: &DEFAULT_EN
-  navigation_search             : 'Press Accesskey [4] for Search'
-  navigation_menu               : 'Press Accesskey [6] for Navigation Menu'
-  navigation_home               : 'Press Accesskey [1] for Homepage'
-  read_more                     : 'Read more ›'
-  show_all_articles             : 'Show All Articles ›'
-  visit_frontpage               : 'Visit the frontpage'
-  comments_headline             : 'Comments'
-  enable_disqus                 : 'Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>'
-  written_by                    : 'Written by'
-  more_articles                 : 'More Articles'
-  follow_me_on                  : 'Follow me at'
-  subscribe_to_my_rss_feed      : 'Subscribe to my RSS Feed'
-  source                        : 'Source'
-  check_out_link                : 'Check out the link ›'
-  enter_search_term             : 'Enter search term and hit enter'
-  search_results                : 'Search Results'
-  search                        : 'Search ›'
-  search_input_placeholder      : 'Search [Hit Tab and start writing]'
-  try_404                       : 'Try…  '
-  no_problem_404                : 'No Problem!'
-  start_over_404                : '...to start over on the'
-  search_below_404              : '...to **search** below  '
-  search_404                    : 'Search'
+  back_to_top                   : 'Back to Top'
+  breadcrumb_home_label         : "Home"
+  breadcrumb_separator          : "/"
+  categories_label              : "Categories:"
+  comment_btn_submit            : "Submit Comment"
+  comment_btn_submitted         : "Submitted"
+  comment_error_msg             : "Sorry, there was an error with your submission. Please make sure all required fields have been completed and try again."
+  comment_form_comment_label    : "Comment"
+  comment_form_email_label      : "Email address"
+  comment_form_info             : "Your email address will not be published. Required fields are marked"
+  comment_form_md_info          : "Markdown is supported."
+  comment_form_name_label       : "Name"
+  comment_form_website_label    : "Website (optional)"
+  comment_success_msg           : "Thanks for your comment! It will show on the site once it has been approved."
+  comments_label                : "Leave a Comment"
+  comments_title                : "Comments"
+  date_label                    : "Updated:"
+  email_label                   : "Email"
+  ext_link_label                : "Direct Link"
+  feed_label                    : "Feed"
+  follow_label                  : "Follow"
+  less_than                     : "less than"
+  loading_label                 : "Loading..."
+  menu_label                    : "Toggle menu"
+  minute_read                   : "minute read"
+  page                          : "Page"
+  pagination_next               : "Next"
+  pagination_previous           : "Previous"
+  powered_by                    : "Powered by"
+  recent_posts                  : "Recent Posts"
+  related_label                 : "You May Also Enjoy"
+  search_label                  : "Toggle search"
+  search_placeholder_text       : 'Enter your search term...'
+  share_on_label                : 'Share on'
+  tags_label                    : "Tags:"
+  website_label                 : "Website"
 
 en-US:
   <<: *DEFAULT_EN
@@ -51,102 +64,3 @@ en-GB:
   <<: *DEFAULT_EN
 en-AU:
   <<: *DEFAULT_EN
-
-
-
-# German / Deutsch
-# -----------------
-de: &DEFAULT_DE
-  navigation_search             : 'Drück den Accesskey [4] für Suche'
-  navigation_menu               : 'Drück den Accesskey [6] für das Navigation Menü'
-  navigation_home               : 'Drück den Accesskey [1] für die Startseite'
-  read_more                     : 'Weiterlesen&nbsp;›'
-  show_all_articles             : 'Zeige alle Beiträge&nbsp;›'
-  visit_frontpage               : 'Besuch die Startseite'
-  comments_headline             : 'Kommentare'
-  enable_disqus                 : 'Bitte schalte Javascript ein, um die Kommentare zu lesen. <a href="http://disqus.com/?ref_noscript">Kommentarfunktion von Disqus.</a>'
-  search                        : 'Suche'
-  search_input_placeholder      : 'Suchen [Drücke Tab und schreib los]'
-  written_by                    : 'Geschrieben von'
-  more_articles                 : 'Mehr Artikel'
-  follow_me_on                  : 'Folge mir auf'
-  subscribe_to_my_rss_feed      : 'Abonnier meinen RSS Feed'
-  source                        : 'Source'
-  check_out_link                : 'Schau Dir den Link an ›'
-
-de-DE:
-  <<: *DEFAULT_DE
-de-AT:
-  <<: *DEFAULT_DE
-de-CH:
-  <<: *DEFAULT_DE
-de-BE:
-  <<: *DEFAULT_DE
-de-LI:
-  <<: *DEFAULT_DE
-de-LU:
-  <<: *DEFAULT_DE
-
-# Portuguese
-# -----------------
-pt: &DEFAULT_PT
-  navigation_search             : 'Pressione [4] para usar a busca'
-  navigation_menu               : 'Pressione [6] para acessar o Menu de Navegação'
-  navigation_home               : 'Pressione [1] para acessar a Home'
-  read_more                     : 'Leia mais ›'
-  show_all_articles             : 'Mostrar todos os artigos ›'
-  visit_frontpage               : 'Visite a frontpage'
-  comments_headline             : 'Comentários'
-  enable_disqus                 : 'Por favor ative o JavaScript para ver os <a href="http://disqus.com/?ref_noscript">comentários via Disqus.</a>'
-  written_by                    : 'Escrito por'
-  more_articles                 : 'Mais Artigos'
-  follow_me_on                  : 'Siga-me no'
-  subscribe_to_my_rss_feed      : 'Assine o meu RSS Feed'
-  source                        : 'Fonte'
-  check_out_link                : 'Confira o link ›'
-  enter_search_term             : 'Digite um termo de busca e aperte Enter'
-  search_results                : 'Resultados de busca'
-  search                        : 'Busca ›'
-  search_input_placeholder      : 'Buscar [Aperte tab e comece a escrever]'
-  try_404                       : 'Tente…  '
-  no_problem_404                : 'Sem Problema!'
-  start_over_404                : '...to start over on the'
-  search_below_404              : '...to **search** below  '
-  search_404                    : 'Buscar'
-
-pt-BR:
-  <<: *DEFAULT_PT
-pt-PT:
-  <<: *DEFAULT_PT
-
-# Dutch / Nederlands
-# -----------------
-# More on Accesskeys › http://www.cs.tut.fi/~jkorpela/forms/accesskey.html
-nl: &DEFAULT_NL
-  navigation_search             : 'Druk op toets [4] voor Zoeken'
-  navigation_menu               : 'Druk op toets [6] voor Navigatie'
-  navigation_home               : 'Druk op toets [1] voor Homepage'
-  read_more                     : 'Lees meer ›'
-  show_all_articles             : 'Toon meer artikelen ›'
-  visit_frontpage               : 'Ga naar de voorpagina'
-  comments_headline             : 'Commentaar'
-  enable_disqus                 : 'Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>'
-  written_by                    : 'Geschreven door'
-  more_articles                 : 'Meer artikelen'
-  follow_me_on                  : 'Volg me op'
-  subscribe_to_my_rss_feed      : 'Schrijf je in voor mijn RSS Feed'
-  source                        : 'Bron'
-  check_out_link                : 'Bekijk de link ›'
-  enter_search_term             : 'Geef een zoekterm op en druk op ENTER'
-  search_results                : 'Zoekresultaten'
-  search                        : 'Zoek ›'
-  search_input_placeholder      : 'Zoek [druk op TAB en start met typen]'
-  try_404                       : 'Probeer…  '
-  no_problem_404                : 'Geen pobleem!'
-  start_over_404                : '...om opnieuw te starten op'
-  search_below_404              : '...naar **zoeken** hieronder  '
-  search_404                    : 'Zoek'
-  recent_posts                  : 'Recent'
-
-nl-NL:
-  <<: *DEFAULT_NL

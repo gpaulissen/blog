@@ -117,7 +117,7 @@ footer:
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/gert-jan-paulissen-2508203/"
     - label: Sitemap
-      url: "/sitemap/"
+      url: "/blog/sitemap/"
       type: "application/xml"
 
 #       ____       ____            ____
@@ -148,6 +148,7 @@ defaults:
     values:
       layout: single
       author_profile: true
+      comments: false
       sitemap: true
 
 comments:
