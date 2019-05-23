@@ -1,6 +1,6 @@
 ---
 title: About ING and dumping data to files
-categories: work
+categories: development
 tags: [ Oracle, PRO*C, C ]
 permalink: /oradumper/
 ---

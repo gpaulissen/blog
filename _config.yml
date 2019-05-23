@@ -96,7 +96,7 @@ exclude:
 author:
   name   : "Gert-Jan Paulissen"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "Working in the computer industry"
+  bio    : "I have been (and still am) working in the computer industry as a developer/tester/consultant"
   links:
     - label: "About"
       icon: "fas fa-fw fa-link"

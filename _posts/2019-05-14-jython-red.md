@@ -1,6 +1,6 @@
 ---
 title: "Jython for Robotframework EDitor"
-categories: work
+categories: testing
 tags: [ jython, red, ant, perl, eclipse, robotframework ]
 permalink: /jython-red/
 ---

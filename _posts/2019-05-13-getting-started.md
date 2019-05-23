@@ -1,6 +1,6 @@
 ---
 title: "Getting started"
-categories: work
+categories: cms
 permalink: /getting-started/
 ---
 In the beginning ... you decide to start a Blog site. How?
