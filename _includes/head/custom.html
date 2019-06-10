@@ -1,4 +1,9 @@
+{% if page.redirect_url %}
+<meta charset="UTF-8" http-equiv="Refresh" content="{{ page.redirect_pause }}; url={{ page.redirect_url }}" />
+{% else %}
 <meta charset="UTF-8">
+{% endif %}
+
 <meta name="google" content="notranslate">
 <meta http-equiv="Content-Language" content="{{ site.lang }}">
 <div id="google_translate_element" style="text-align:right"></div>
