@@ -1,9 +1,14 @@
 source "https://rubygems.org"
 
+require 'json'
+require 'open-uri'
+versions = JSON.parse(open('https://pages.github.com/versions.json').read)
+
 # To suppress this error:
 #
 # Invalid theme folder: _sass
-gem 'jekyll', '3.7.4'
+# gem 'jekyll', '3.7.4'
+gem 'jekyll', versions['jekyll']
 
 jekyll_env = ENV['JEKYLL_ENV'] || 'development'
 
@@ -13,13 +18,14 @@ then
   gem 'html-proofer'
   gem 'rake'
 end
-gem "github-pages", group: :jekyll_plugins
+# gem "github-pages"
+gem 'github-pages', versions['github-pages'], group: :jekyll_plugins
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
-  gem "jekyll-gist"
+  gem "jekyll-gist", versions['jekyll-gist']
   gem "jekyll-sitemap"
-  gem "jekyll-paginate"
+  gem "jekyll-paginate", versions['jekyll-paginate']
   gem "jekyll-include-cache"
-  gem "jekyll-remote-theme"
+  gem "jekyll-remote-theme", versions['jekyll-remote-theme']
 end
