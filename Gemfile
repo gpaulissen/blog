@@ -4,6 +4,9 @@ require 'json'
 require 'open-uri'
 versions = JSON.parse(open('https://pages.github.com/versions.json').read)
 
+gem 'tzinfo', '~> 1.2'
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
 # To suppress this error:
 #
 # Invalid theme folder: _sass
