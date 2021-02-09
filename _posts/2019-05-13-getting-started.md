@@ -22,10 +22,10 @@ And when the choice is GitHub Pages you want to use
 Jekyll theme. Well, in the end I found
 [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes) a suitable (remote) theme.
 
-For getting into contact with me, I used [Basin](https://usebasin.com/).
+For getting into contact with me, I used [Formspree](https://formspree.io/).
 
 So this is the list of components I use to store and publish my Blogs:
 * GitHub Pages - publish your website hosted directly from your GitHub repository
 * Jekyll - the tool for Blogging using Markdown syntax
 * Minimal Mistakes - a Jekyll theme
-* Basin - a secure form backend
+* Formspree - the form solution for any developer
