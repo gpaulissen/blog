@@ -1,10 +1,13 @@
 ---
 title: About Oracle Apex and translations
 categories: development
-tags: [ Oracle, Apex ]
+tags: [ Oracle, Apex, Translation ]
 permalink: /oracle-apex-translation/
 
 ---
+
+![no-alignment]({{ site.url }}{{ site.baseurl }}/assets/images/earth-globe-3-1451708-640x640.jpg)
+
 In an international environment being able to translate an Apex application without too much effort is a valuable asset.
 
 Traditionally Apex offered a process to translate an application:

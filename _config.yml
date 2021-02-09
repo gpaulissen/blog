@@ -31,7 +31,6 @@ description          : >- # this means to ignore newlines until the next variabl
 twitter_username     : gert.jan.paulissen@gmail.com
 github_username      : gpaulissen
 minimal_mistakes_skin: "aqua" # "default", "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
-search               : true
 url                  : 'https://gpaulissen.github.io'
 repository           : gpaulissen/blog
 baseurl              : '/blog'
@@ -43,8 +42,6 @@ locale               : 'en'
 
 # Build settings
 markdown             : kramdown
-remote_theme         : mmistakes/minimal-mistakes
-#theme                : minimal-mistakes-jekyll
 # Outputting
 permalink            : /:categories/:title/
 paginate             : 5 # amount of posts to show
@@ -137,6 +134,7 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
+      show_date: true
       comments: false
       share: true
       related: true
@@ -164,10 +162,39 @@ tag_archive:
 # Frontpage-Layout-Settings
 excerpt_separator: <!--more-->   # Use <!--more--> in your posts to generate an excerpt and a teaser
 
-#theme: jekyll-theme-minimal
-show_date: true
+#
+# Minimal mistakes settings
+#
+# 
+#     __  ____       _                 __   __  ____      __        __                _____      __  __  _                 
+#    /  |/  (_)___  (_)___ ___  ____ _/ /  /  |/  (_)____/ /_____ _/ /_____  _____   / ___/___  / /_/ /_(_)___  ____ ______
+#   / /|_/ / / __ \/ / __ `__ \/ __ `/ /  / /|_/ / / ___/ __/ __ `/ //_/ _ \/ ___/   \__ \/ _ \/ __/ __/ / __ \/ __ `/ ___/
+#  / /  / / / / / / / / / / / / /_/ / /  / /  / / (__  ) /_/ /_/ / ,< /  __(__  )   ___/ /  __/ /_/ /_/ / / / / /_/ (__  ) 
+# /_/  /_/_/_/ /_/_/_/ /_/ /_/\__,_/_/  /_/  /_/_/____/\__/\__,_/_/|_|\___/____/   /____/\___/\__/\__/_/_/ /_/\__, /____/  
+#                                                                                                            /____/        
+#
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+remote_theme         : "mmistakes/minimal-mistakes@4.22.0"
+search               : true
 
 # GJP 2021-02-09 To prevent this warning:
 #
 # GitHub Metadata: No GitHub API authentication could be found. Some fields may be missing or have incorrect data.
 github: [metadata]
+
+
+#    ______            __             __     _____      __  __  _                 
+#   / ____/___  ____  / /_____ ______/ /_   / ___/___  / /_/ /_(_)___  ____ ______
+#  / /   / __ \/ __ \/ __/ __ `/ ___/ __/   \__ \/ _ \/ __/ __/ / __ \/ __ `/ ___/
+# / /___/ /_/ / / / / /_/ /_/ / /__/ /_    ___/ /  __/ /_/ /_/ / / / / /_/ (__  ) 
+# \____/\____/_/ /_/\__/\__,_/\___/\__/   /____/\___/\__/\__/_/_/ /_/\__, /____/  
+#                                                                   /____/        
+
+contact:
+  endpoint: "https://formspree.io/f/xqkgjoky"
+  recaptcha:
+    sitekey: "6LcL6aQUAAAAAJ-gqbHy7N036R2nj_0EQuj20Jdc"
