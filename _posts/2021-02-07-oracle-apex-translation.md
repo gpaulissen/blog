@@ -2,7 +2,7 @@
 title: About Oracle Apex and translations
 last_modified_at: 2021-02-10T14:44:00
 categories: development
-tags: [ Oracle, Apex, Translation ]
+tags: [ Oracle, Apex, Translation, DevOps ]
 permalink: /oracle-apex-translation/
 
 ---

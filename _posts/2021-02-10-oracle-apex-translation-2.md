@@ -1,7 +1,7 @@
 ---
 title: About Oracle Apex and translations (2)
 categories: development
-tags: [ Oracle, Apex, Translation ]
+tags: [ Oracle, Apex, Translation, DevOps ]
 permalink: /oracle-apex-translation-2/
 toc: true
 toc_label: "Table of contents"
