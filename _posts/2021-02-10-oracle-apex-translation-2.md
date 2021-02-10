@@ -140,7 +140,7 @@ and     aat.language_code = :p_language
 
 So using the three signatures and the query to retrieve the ID, you can create
 a nice API to select and maintain Apex text messages. And you can use that in
-your DevOpps process to automatically insert, update, merge or delete
+your DevOps process to automatically insert, update, merge or delete
 messages. Combined with the `APP_TEXT$Message_Name` syntax mentioned in my
 previous post about this subject, you can already translate an important part
 of your application without going thru the tedious process Oracle Apex
