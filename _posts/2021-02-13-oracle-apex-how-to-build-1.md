@@ -8,6 +8,11 @@ toc_label: "Table of contents"
 toc_icon: "database"
 ---
 
+<figure class="centered">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/512px-Devops-toolchain.svg.png" alt="">
+	<figcaption>Kharnagy, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons</figcaption>
+</figure> 
+
 # Why this subject and why now?
 
 Last week a former manager of mine complimented me on [my LinkedIn
