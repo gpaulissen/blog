@@ -1,7 +1,7 @@
 ---
 title: How to build an Oracle Apex application (1)
 categories: development
-tags: [ Oracle, Apex, DevOps ]
+tags: [ Oracle, Apex, DevOps, DataModeling ]
 permalink: /oracle-apex-how-to-build-1/
 toc: true
 toc_label: "Table of contents"
@@ -21,6 +21,14 @@ introduced to my current boss by another former manager that shares the same
 first name as the other manager. Thanks Harm I and II, for your gentle words
 and thank you boss for pushing me to write this documentation.
 
+Already soon in my career I invented solutions for not installing applications
+manually. Sometimes the boss/manager/team did not see a value added right away
+but after some time they got convinced, well almost all of them. In the Oracle
+Designer era, I repeated this while working on an assignment for the ING bank
+in Amsterdam. And in 2015 when I was working for pension fund MN in The Hague,
+The Netherlands, I joined the Continuous Integration team and started to
+assemble the ideas I am going to present to you here.
+
 Actually I think I have enough material for a book or maybe even more. But
 let's just start with a Blog and see what's comes of it. I won't dive too much
 into details but I assure you that with the help of my ideas you are better
@@ -33,17 +41,21 @@ A title is important and I hope that it describes well what I do want to share
 with you in this series of articles. It is not so much about how to use the
 back-end part (Oracle database) or the front-end (Oracle Apex). It is much
 more about the tools, techniques and best practices around them in order to
-build, deploy and maintain an Oracle Apex application, Actually, Apex can be
-replaced by another front-end like Java ADF, React, Angular or whatever. I
-have used the word **build** on purpose and not something like develop because
-I see an analogy with building a house. You don't build a house by buying
-parts like a door and some tools. No you need a
-**plan**, an **architecure** if you prefer. And how often I see people
+build, deploy and maintain an Oracle Apex application efficiently and
+correctly. Actually, Apex can be replaced by another front-end like Java ADF,
+React, Angular or whatever. I have used the word **build** on purpose and not
+something like develop because I see an analogy with building a house. You
+don't build a house by just buying parts like a door and some tools. No you need a
+**plan**, an **architecture** if you prefer. And how often I see people
 beginning with creating a table, an Apex screen and then they think they are
-doing well. Maybe their boss is happy because s/he sees something visible but IMO
-they just started without a plan. You just **DON'T** start with a door and
+doing well. Maybe their boss/client is happy because s/he sees something visible but
+IMO they just started without a plan. You just **DON'T** start with a door and
 some tools when you need to build a house, so do not make the same
 **mistake** when you build an Oracle application.
+
+And there are other build analogies:
+- the tool [Ant](https://ant.apache.org/) needs a build file to execute tasks;
+- the Unix programs are usually installed after they are being built from source.
 
 # Philosophy
 
@@ -79,7 +91,7 @@ to run the migration scripts.
 So embrace the Unix philosophy and use Flyway to run database migration scripts.
 
 Another important point is to use the power of the Oracle database. It is an
-expensive product but very powerfull so use it thoroughly and get used to it. Take
+expensive product but very powerful so use it thoroughly and get used to it. Take
 lessons, courses, read books, read Blogs but **invest** in it. It will really help
 you to build better.
 
@@ -116,7 +128,6 @@ Quoting Rob van Wijk:
 > This layered approach is a choice we've made to
 > enhance security and flexibility in our applications. The three schemas only have a minimal
 > set of system privileges, just enough to create the object types needed for that layer.
-
 
 ### DATA
 
@@ -155,17 +166,34 @@ may use an interface from this layer. The UI layer may use objects from this lay
 
 ## Tools, techniques and best practices
 
+### Oracle database and Oracle Apex
+
+I have used [Virtualbox](https://www.virtualbox.org/) and the prebuilt virtual
+machine [Database App Development
+VM](https://www.oracle.com/downloads/developer-vm/community-downloads.html)
+from Oracle for my development environment. I strongly believe in having a
+separate database for each developer while developing. I do not want to
+interfere with others nor I do not want that others interfere with me while I
+work. At a later stage you can always use an integration or test database to
+see if everything works well together.
+
+Keep in mind that you cannot import an Apex application into another Apex
+instance if the exported version is **higher** than the version of Apex to
+import into. So exporting an Apex 19.2 application will **not** import into
+Apex 18.2. So align all your Apex versions from development till production.
+{: .notice--warning}
+
 ### Oracle SQL Developer Data Modeler
 
 Maybe lesser known than its big brother Oracle SQL Developer but a tool that
-allows you to build a great plan of your database application various modeling
-techniques like Entity Relationship Modeling and a lot, lot more. It even
-allows you to create databse scripts or migration scripts that you may use in
-Flyway.
+allows you to build a great model (plan) of your database application using
+various modeling techniques like Entity Relationship Modeling and a lot, lot
+more. It even allows you to create database scripts or migration scripts that
+you may use in Flyway.
 
 A book I can recommend is [Oracle SQL Developer Data Modeler for Database Design Mastery](https://www.goodreads.com/book/show/23871562-oracle-sql-developer-data-modeler-for-database-design-mastery) by [Heli Helskyaho](https://helifromfinland.blog/).
 
-You can better use **one** modeling project for all your aplications when you use SQL Data Modeler so you can share your configuration more easily between projects and developers.
+You can better use **one** modeling project for all your applications when you use SQL Data Modeler so you can share your configuration more easily between projects and developers.
 {: .notice--warning}
 
 ### Version control
@@ -179,7 +207,6 @@ is a `sine qua non`.
 
 SQL Data Modeler only supports Subversion but sites like [GitHub](https://docs.github.com/en/github/importing-your-projects-to-github/working-with-subversion-on-github) support both Git and Subversion.
 {: .notice--info}
-
 
 ### Maven
 
@@ -195,12 +222,42 @@ exporting and importing Apex applications or running unit tests.
 
 Already described, integrates very well with the tools above.
 
+### Oracle SQL Developer
+
+> Oracle SQL Developer is a free, integrated development environment that simplifies the development and management of Oracle Database in both traditional and Cloud deployments.
+> SQL Developer offers complete end-to-end development of your PL/SQL applications,
+> a worksheet for running queries and scripts,
+> a DBA console for managing the database,
+> a reports interface,
+> a complete data modeling solution,
+> and a migration platform for moving your 3rd party databases to Oracle.
+
+> <cite><a href="https://www.oracle.com/database/technologies/appdev/sqldeveloper-landing.html">Oracle SQL Developer</a></cite>
+
+So this tool is already a great asset for a database developer but it is absolutely
+necessary when your DBA only allows you to access this tool and Java in a
+Citrix environment where the command line or Maven is forbidden. After all,
+Maven is just launching Java with some command line options. And you can
+launch a program from the SQL Developer External Tools.
+
 ### utPLSQL
 
 A PL/SQL unit testing framework originally developed by Steven Feuerstein, we
 now have [version 3](http://utplsql.org/utPLSQL/latest/). An impressive piece
 of work and easy to use. In the Java community it is normal to unit test but
 not so in the Oracle community. This tool may convince you!
+
+### Perl
+
+I have learned [Perl, the Practical Extraction and Report
+Language][https://strawberryperl.com/), a long time ago and it still helps me
+with doing some scripting tasks. So there is no reason for me to switch to
+Python or something else.
+
+### Ant
+
+Ant has just been described before and it interacts well with Maven and is
+sometimes more simple to use than Maven.
 
 ### DevOps
 
@@ -221,7 +278,7 @@ pipeline based on Maven.
 
 I hope I have given you enough appetite to continue reading this series of
 articles about building Oracle applications. Apart from the Oracle database
-all tools are mature and open source so you can use that argument to convince your
+all tools are open source (and mature) so you can use that argument to convince your
 boss. And some tools also have a (paid) support option if that is needed.
 
 Stay tuned!
