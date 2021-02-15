@@ -129,6 +129,16 @@ may help you with that.
 Anyhow if you have followed my advice to use a virtual machine for
 development, you have an Apex instance now.
 
+If you need to collaborate while developing an application you need of course
+a shared database and Apex instance. It will be a little bit more difficult
+since you need to be more careful but thanks to the ability to lock Apex pages
+and to define Build Options you can manage.
+
+For me the way to go from development to production is to export the
+development application and import it in every next stage till it reaches
+production. I do not consider it a very good idea to manually apply the
+changes in later stages. It is certainly not the DevOps way.
+
 Keep in mind that you cannot import an Apex application into another Apex
 instance if the exported version is **higher** than the version of Apex to
 import into. So exporting an Apex 19.2 application will **not** import into
