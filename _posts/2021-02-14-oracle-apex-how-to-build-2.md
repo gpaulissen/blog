@@ -16,7 +16,7 @@ toc_icon: "database"
 Last time in ["How to build an Oracle Apex application (1)"]({{ site.url }}{{ site.baseurl }}/oracle-apex-how-to-build-1/), I gave you an
 introduction.
 
-This time I will elaborate on the architecture.
+This time I will elaborate on the database structure.
 
 # Project folder layout
 
