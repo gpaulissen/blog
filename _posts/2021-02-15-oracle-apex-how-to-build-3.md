@@ -69,7 +69,7 @@ My advice is to use the latest major version or the one before. So for an [Oracl
 Database nowadays](https://en.wikipedia.org/wiki/Oracle_Database) this means version
 21c or 19c (equivalent with 12.2.0.3). This is a
 simple advice for any software and it assures you that you keep up with
-enhancements, (security) patches and so on. Do not wait too long. Again I
+enhancements, (security) patches and so on. Do not wait to long. Again I
 will use the analogy with a house: you'd better paint and maintain it
 regularly than wait till the wood has rotten.
 
@@ -79,7 +79,7 @@ I have talked about it briefly in the [first post]({{ site.url }}{{
 site.baseurl }}/oracle-apex-how-to-build-2/) but for a development environment
 I would just download a virtual development machine. It comes with the
 database and Apex integrated on an Unbreakable Linux Operation System. Simple
-to use and backup and you can be a DBA without bothering anyone. And free of
+to use and backup and you can be the DBA without bothering anyone. And free of
 charge for a development environment.
 
 Do not forget to make snapshots (backups) regularly. It has saved my life
