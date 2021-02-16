@@ -6,6 +6,7 @@ permalink: /oracle-apex-how-to-build-3/
 toc: true
 toc_label: "Table of contents"
 toc_icon: "database"
+excerpt: "This time I will elaborate on the base tools, the Oracle database and Oracle Apex."
 ---
 
 <figure class="centered">
@@ -129,15 +130,51 @@ may help you with that.
 Anyhow if you have followed my advice to use a virtual machine for
 development, you have an Apex instance now.
 
-If you need to collaborate while developing an application you need of course
-a shared database and Apex instance. It will be a little bit more difficult
-since you need to be more careful but thanks to the ability to lock Apex pages
-and to define Build Options you can manage.
-
 For me the way to go from development to production is to export the
 development application and import it in every next stage till it reaches
 production. I do not consider it a very good idea to manually apply the
 changes in later stages. It is certainly not the DevOps way.
+
+## Collaborating
+
+If you need to collaborate while developing an application you need of course
+a shared database and Apex instance. It will be a little bit more difficult
+since you need to be more careful but thanks to the ability to lock Apex pages
+and the Build Options you can manage.
+
+## Parallel development
+
+The problem with Apex is that you can not really install parts of it: it is
+all or nothing. So even if you split the Apex application export file using
+the [SQLcl](https://www.oracle.com/database/technologies/appdev/sqlcl.html) client, you can not just use some files. You have to use them all.
+
+This influences also parallel development (branching if you prefer).
+
+> My current client has a large number of APEX applications, one of which is a
+> doozy. It is a mission-critical and complex application in APEX 4.0.2 used
+> throughout the business, with an impressively long list of features, with an
+> equally impressively long list of enhancement requests in the queue.
+>
+> They always have a number of projects on the go with it, and they wanted us to
+> develop two major revisions to it in parallel. In other words, we'd have v1.0
+> (so to speak) in Production, which still needed support and urgent defect
+> fixing, v1.1 in Dev1 for project A, and v1.2 in Dev2 for project B. Oh, and we
+> don't know if Project A will go live before Project B, or vice versa. We have
+> source control, so we should be able to branch the application and have
+> separate teams working on each branch, right?
+>
+> We said, "no way". Trying to merge changes from a branch of an APEX app into
+> an existing APEX app is not going to work, practically speaking. The merged
+> script would most likely fail to run at all, or if it somehow magically runs,
+> it'd probably break something.
+
+> <cite><a
+  href="https://jeffkemponoracle.com/2014/01/parallel-development-in-apex/">Parallel
+  Development in APEX, Jeff Kemp on Oracle, 23 January 2014</a></cite>
+
+Things have not really changed since 2014. 
+
+## Keep Apex versions aligned
 
 Keep in mind that you cannot import an Apex application into another Apex
 instance if the exported version is **higher** than the version of Apex to

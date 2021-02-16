@@ -6,6 +6,7 @@ permalink: /oracle-apex-how-to-build-1/
 toc: true
 toc_label: "Table of contents"
 toc_icon: "database"
+excerpt: "An introduction on \"How to build an Oracle Apex application\"."
 ---
 
 <figure class="centered">

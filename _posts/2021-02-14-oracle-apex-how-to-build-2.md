@@ -6,6 +6,7 @@ permalink: /oracle-apex-how-to-build-2/
 toc: true
 toc_label: "Table of contents"
 toc_icon: "database"
+excerpt: "Focus on the database structure."
 ---
 
 <figure class="centered">
