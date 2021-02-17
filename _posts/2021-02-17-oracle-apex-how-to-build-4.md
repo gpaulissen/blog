@@ -30,9 +30,8 @@ I use Data Modeler mainly for modeling, documentation and generating DDL
 scripts for the initial setup and incremental migration scripts later on. For
 other activities I use tools that suit me better, the Unix approach.
 
-This utility allows you to define views. Do **not** try it since it will give you
-a lot of problems. A simple text editor is much more suited to define your
-view.
+This utility allows you to define views. I do **not** use it since it gave me
+a lot of problems. A simple SQL script to create the view is just enough.
 {: .notice--warning}
 
 ### Logical Model
@@ -82,7 +81,7 @@ rules](http://rwijk.blogspot.nl/2008/07/implementing-business-rules.html) by
 Rob van Wijk.
 
 I have had difficulties with constraints implemented by materialized views
-with refresh on commit in an Apex environment. Maybe I did it wrong, maybe the database version
+with refresh fast on commit in an Apex environment. Maybe I did it wrong, maybe the database version
 (Oracle 12) was a little buggy or maybe it works just nice in theory. I resorted to
 triggers and PL/SQL.
 {: .notice--warning}
@@ -108,7 +107,8 @@ One of the features I can really recommend are the `Design Rules And Transformat
 
 ### Design Rules
 
-This is the `LINT` like tool of Data Modeler.
+This is the `LINT` like tool of Data Modeler. Applicable for the Logical Model
+and Relational Models as well. 
 
 ### Custom Transformation Scripts
 
