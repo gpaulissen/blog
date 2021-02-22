@@ -1,7 +1,7 @@
 ---
 title: How to build an Oracle Apex application (5)
 categories: development
-tags: [ Oracle, Apex, DevOps, DataModeling, Git, Subversion, Maven, Flyway ]
+tags: [ Oracle, Apex, Git, Subversion, Maven, Flyway ]
 permalink: /oracle-apex-how-to-build-5/
 toc: true
 toc_label: "Table of contents"
@@ -103,7 +103,10 @@ against unexpected situations. It depends.
 
 ### Repeatable migrations
 
-Repeatable migrations are very useful for managing database objects whose definition can then simply be maintained in a single file in version control. Instead of being run just once, they are (re-)applied every time their checksum changes.
+Repeatable migrations are very useful for managing database objects whose
+definition can then simply be maintained in a single file in version
+control. Instead of being run just once, they are (re-)applied every time
+their checksum changes.
 
 They are typically used for:
 - (Re-)creating views/procedures/functions/packages/
@@ -151,7 +154,7 @@ object (a view for instance) that has not yet been created, Flyway will fail
 {: .notice--warning}
 
 You must be careful with views and instead of triggers. Instead triggers have
-the nasty quality of disappearing when you recreate the view. But there is a
+the nasty characteristic of disappearing when you recreate the view. But there is a
 simple solution. Create the instead of trigger in the **same** script as the
 view (creating the view first obviously). Then Flyway will be your savior.
 {: .notice--warning}
@@ -175,7 +178,7 @@ migration scripts.
 
 There is another competitor of Flyway: Liquibase.
 
-I have in vestigated Liquibase long time ago and I saw recently that the
+I have investigated Liquibase long time ago and I saw recently that the
 Oracle SQLcl client supports Liquibase. I still prefer Flyway because it is so
 much easier to understand and use. And it handles PL/SQL code so much better.
 
@@ -211,14 +214,18 @@ you can just begin with the:
 # Version control
 
 As already stated before version control tools are necessary for a mature
-project. And the tools used are Git and Subversion.
+project. 
 
-## Git
+## Tools
+
+The tools used nowadays are Git and Subversion.
+
+### Git
 
 Git is nowadays the standard version control tool and also the standard for
 GitHub.com, the standard Open Source site. Not a real choice thus.
 
-## Subversion
+### Subversion
 
 Subversion is used because Oracle SQL Developer Data Modeler only supports
 this version control tool. However, luckily there is a Git Subversion bridge
@@ -239,7 +246,20 @@ So that's why I add this code in the project parent POM:
 </scm>
 ```
 
-See for more information: [Support for Subversion clients, Github.com](https://docs.github.com/en/github/importing-your-projects-to-github/support-for-subversion-clients)
+See for more information: [Support for Subversion clients,
+Github.com](https://docs.github.com/en/github/importing-your-projects-to-github/support-for-subversion-clients)
+
+## Branching or not?
+
+I am not a big fan of branching, especially not in a database environment. I
+prefer to have a development process where you implement features. The code
+changes initially do not impact production code by using constructs like
+conditional compiling (available since Oracle 10) and Apex Build Options (or
+if nothing else is available if/then/else) based on a configuration (for
+instance a package header defining some boolean constants). Those
+constructions allow you to enable/disable parts of the code. In the database
+you could even go further using Edition Based Redefinition (EBR) but that
+seems only necessary for applications running 24x7.
 
 # Conclusion
 

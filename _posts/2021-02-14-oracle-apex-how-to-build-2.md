@@ -1,7 +1,7 @@
 ---
 title: How to build an Oracle Apex application (2)
 categories: development
-tags: [ Oracle, Apex, DevOps, DataModeling ]
+tags: [ Oracle, Apex ]
 permalink: /oracle-apex-how-to-build-2/
 toc: true
 toc_label: "Table of contents"

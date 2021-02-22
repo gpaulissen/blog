@@ -1,7 +1,7 @@
 ---
 title: How to build an Oracle Apex application (3)
 categories: development
-tags: [ Oracle, Apex, DevOps, DataModeling, Virtualbox, VirtualMachine ]
+tags: [ Oracle, Apex, Virtualbox, VirtualMachine ]
 permalink: /oracle-apex-how-to-build-3/
 toc: true
 toc_label: "Table of contents"
