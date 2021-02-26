@@ -256,7 +256,7 @@ not so in the Oracle community. This tool may convince you!
 ### Perl
 
 I have learned [Perl, the Practical Extraction and Report
-Language][https://strawberryperl.com/), a long time ago and it still helps me
+Language](https://strawberryperl.com/), a long time ago and it still helps me
 with doing some scripting tasks. So there is no reason for me to switch to
 Python or something else.
 
