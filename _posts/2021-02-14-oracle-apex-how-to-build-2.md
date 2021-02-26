@@ -123,17 +123,17 @@ returns:
 
 Some explanation:
 - the `support schema` directory contains scripts that let the application work with
-support software. You can think of another schema that contains generic error
+support software. So you can think of another schema that contains generic error
 packages or packages to manipulate Apex text messages and in this directory
 you will add the necessary grant scripts. The support software itself is
 maintained by another project.
 - the `admin` directories contain scripts to setup a schema by a DBA.
-- the `dml` directories contain scripts to insert reference data, for instance
+- `dml` directories contain scripts to insert reference data, for instance
 Apex text messages or a list of countries.
-- the `full` directories contain (repeatable) Flyway database migration scripts that are run
+- `full` directories contain (repeatable) Flyway database migration scripts that are run
 every time they change (for a database). They are meant for database objects than can be
 replaced (`CREATE OR REPLACE ...`).
-- the `incr` directories contain (incremental) Flyway database migration scripts that will run
+- `incr` directories contain (incremental) Flyway database migration scripts that will run
 only once (for a database), so for objects that can not be replaced like tables and constraints
 or for dropping objects.
 

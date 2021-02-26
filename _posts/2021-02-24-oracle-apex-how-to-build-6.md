@@ -93,7 +93,8 @@ community. Created some 20 years ago by Steven Feuerstein, the third version
 of utPLSQL is really very useful. Easy to use and the
 [documentation](http://utplsql.org/documentation/) is excellent. It even
 integrates with Maven thanks to the
-[utPLSQL-maven-plugin](https://github.com/utPLSQL/utPLSQL-maven-plugin).
+[utPLSQL-maven-plugin](https://github.com/utPLSQL/utPLSQL-maven-plugin). And
+there is a plugin too for SQL Developer, see [Running utPLSQL Tests in SQL Developer](https://www.salvis.com/blog/2019/07/06/running-utplsql-tests-in-sql-developer/).
 
 Do not wait any longer, just **unit test** it!
 

@@ -18,14 +18,16 @@ excerpt: "An introduction on \"How to build an Oracle Apex application\"."
 
 Last week a former manager of mine complimented me on [my LinkedIn
 account](https://www.linkedin.com/in/gert-jan-paulissen-2508203) for a Blog
-called [About Oracle apex and translations (2)](https://www.linkedin.com/pulse/oracle-apex-translations-2-gert-jan-paulissen/?trackingId=dpjSfVX%2FeD6KCXJMF1OHXw%3D%3D). His
-message was that is good to share knowledge as he is doing himself now too. And yeah,
-I whole-heartedly agree. And when my current boss wanted me to write about how
-I build Oracle Apex applications from the beginning till the end, I thought
-let's do it before I leave the company. The funny thing is that I have been
-introduced to my current boss by another former manager that shares the same
-first name as the other manager. Thanks Harm I and II, for your gentle words
-and thank you boss for pushing me to write this documentation.
+called [About Oracle apex and translations
+(2)](https://www.linkedin.com/pulse/oracle-apex-translations-2-gert-jan-paulissen/?trackingId=dpjSfVX%2FeD6KCXJMF1OHXw%3D%3D). His
+message was that is good to share knowledge as he is doing himself now
+too. And yeah, I whole-heartedly agree. And when my current boss wanted me to
+write about how I build Oracle Apex applications from the beginning till the
+end, I thought let's do it before I leave the company. The funny thing is that
+I have been introduced to my current boss by another former manager that
+shares the same first name as the other manager. Thanks Harm I and II, for
+your gentle words. Thank you boss for pushing me to write about "How to build
+an Oracle Apex application".
 
 Already soon in my career I invented solutions for not installing applications
 manually. Sometimes the boss/manager/team did not see a value added right away
@@ -49,7 +51,9 @@ back-end part (Oracle database) or the front-end (Oracle Apex). It is much
 more about the tools, techniques and best practices around them in order to
 build, deploy and maintain an Oracle Apex application efficiently and
 correctly. Actually, Apex can be replaced by another front-end like Java ADF,
-React, Angular or whatever. I have used the word **build** on purpose and not
+React, Angular or whatever.
+
+I have used the word **build** on purpose and not
 something like develop because I see an analogy with building a house. You
 don't build a house by just buying parts like a door and some tools. No you need a
 **plan**, an **architecture** if you prefer. And how often I see people
@@ -179,7 +183,7 @@ machine [Database App Development
 VM](https://www.oracle.com/downloads/developer-vm/community-downloads.html)
 from Oracle for my development environment. I strongly believe in having a
 separate database for each developer while developing. I do not want to
-interfere with others nor I do not want that others interfere with me while I
+interfere with others and I do not want that others interfere with me while I
 work. At a later stage you can always use an integration or test database to
 see if everything works well together.
 
@@ -192,8 +196,8 @@ Apex 18.2. So align all your Apex versions from development till production.
 ### Oracle SQL Developer Data Modeler
 
 Maybe lesser known than its big brother Oracle SQL Developer but a tool that
-allows you to build a great model (plan) of your database application using
-various modeling techniques like Entity Relationship Modeling and a lot, lot
+allows you to build a great model (plan) of your database application. You can
+use various modeling techniques like Entity Relationship Modeling and a lot, lot
 more. It even allows you to create database scripts or migration scripts that
 you may use in Flyway.
 

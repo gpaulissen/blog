@@ -52,7 +52,7 @@ And for those people who like database independence: I just like to get things
 done **well**, so I use PL/SQL since that is just the best language to work
 with the Oracle database. I do not want to use JDBC/ODBC when I can use
 PL/SQL. And every other well designed database has some kind of language like
-PL/SQL so if you want to be independent why not write a language layer for
+PL/SQL. So if you want to be independent why not write a language layer for
 each database having the same functionality.
 
 One more last thing. I have seen a lot of projects with Java developers
@@ -76,7 +76,7 @@ regularly than wait till the wood has rotten.
 ## What platform?
 
 I have talked about it briefly in the [first post]({{ site.url }}{{
-site.baseurl }}/oracle-apex-how-to-build-2/) but for a development environment
+site.baseurl }}/oracle-apex-how-to-build-1/) but for a development environment
 I would just download a virtual development machine. It comes with the
 database and Apex integrated on an Unbreakable Linux Operation System. Simple
 to use and backup and you can be the DBA without bothering anyone. And free of

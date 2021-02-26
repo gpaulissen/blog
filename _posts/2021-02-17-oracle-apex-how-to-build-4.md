@@ -30,7 +30,7 @@ I use Data Modeler mainly for modeling, documentation and generating DDL
 scripts for the initial setup and incremental migration scripts later on. For
 other activities I use tools that suit me better, the Unix approach.
 
-This utility allows you to define views. I do **not** use it since it gave me
+This utility allows you to define views but I do **not** use it since it gave me
 a lot of problems. A simple SQL script to create the view is just enough.
 {: .notice--warning}
 
@@ -42,7 +42,7 @@ You should really take your time to design your model and to verify it using
 the Design Rules described later on. This is the foundation of your
 application.
 
-Do not forget to use domains whenever appropriate. You can even have one
+And do not forget to use domains whenever appropriate. You can even have one
 corporate domains XML file if you prefer.
 {: .notice--info}
 
