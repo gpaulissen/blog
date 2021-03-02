@@ -128,10 +128,10 @@ packages or packages to manipulate Apex text messages and in this directory
 you will add the necessary grant scripts. The support software itself is
 maintained by another project.
 - the `admin` directories contain scripts to setup a schema by a DBA.
-- `dml` directories contain scripts to insert reference data, for instance
+- `dml` directories contain scripts to change reference data, for instance
 Apex text messages or a list of countries.
 - `full` directories contain (repeatable) Flyway database migration scripts that are run
-every time they change (for a database). They are meant for database objects than can be
+every time they change (for a database). They are meant for database objects that can be
 replaced (`CREATE OR REPLACE ...`).
 - `incr` directories contain (incremental) Flyway database migration scripts that will run
 only once (for a database), so for objects that can not be replaced like tables and constraints
