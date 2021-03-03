@@ -411,7 +411,7 @@ The following table shows the match between DevOps processes and tools:
 
 | DevOps process | tools |
 | ============== | ===== |
-| Coding      	 | PL/SQL, front-end like APEX, SQL Developer (Datamodeler), Ant, Perl |
+| Coding      	 | PL/SQL, front-end like APEX, SQL Developer (Data Modeler), Ant, Perl |
 | Building    	 | Maven (using Flyway, Ant) |
 | Testing     	 | Maven (using utPLSQL, SonarQube) |
 | Packaging   	 | Maven (using [Artifactory](https://jfrog.com/artifactory/), [Nexus](https://www.sonatype.com/nexus/repository-pro) or GitHub) |

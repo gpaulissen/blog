@@ -169,7 +169,7 @@ This influences also parallel development (branching if you prefer).
 > an existing APEX app is not going to work, practically speaking. The merged
 > script would most likely fail to run at all, or if it somehow magically runs,
 > it'd probably break something.
-
+>
 > <cite><a
   href="https://jeffkemponoracle.com/2014/01/parallel-development-in-apex/">Parallel
   Development in APEX, Jeff Kemp on Oracle, 23 January 2014</a></cite>

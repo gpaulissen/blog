@@ -112,7 +112,7 @@ apply all the best practices there are.
 # Standing on the shoulders of giants
 
 > If I have seen further it is by standing on the shoulders of Giants.
-
+>
 > <cite><a href="https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants">Isaac Newton in 1675</a></cite>
 
 I have to mention Oracle gurus like Tom Kyte and Steven Feuerstein
@@ -242,7 +242,7 @@ Already described, integrates very well with the tools above.
 > a reports interface,
 > a complete data modeling solution,
 > and a migration platform for moving your 3rd party databases to Oracle.
-
+>
 > <cite><a href="https://www.oracle.com/database/technologies/appdev/sqldeveloper-landing.html">Oracle SQL Developer</a></cite>
 
 So this tool is already a great asset for a database developer but it is absolutely
@@ -282,7 +282,7 @@ sometimes more simple to use than Maven.
 > DevOps is a set of practices that works to automate and integrate the
 > processes between software development and IT teams, so they can build, test,
 > and release software faster and more reliably.
-
+>
 > <cite><a href="https://www.atlassian.com/devops">Atlassian</a></cite>
 
 The tools and techniques I have described can be used from simple to
