@@ -1,12 +1,13 @@
 ---
-title: How to build an Oracle Apex application (1)
+title: How to build an Oracle APEX application (1)
 categories: development
-tags: [ Oracle, Apex, DevOps, DataModeling ]
+tags: [ Oracle, APEX, DevOps, DataModeling ]
 permalink: /oracle-apex-how-to-build-1/
 toc: true
 toc_label: "Table of contents"
 toc_icon: "database"
-excerpt: "An introduction on \"How to build an Oracle Apex application\"."
+excerpt: "An introduction on \"How to build an Oracle APEX application\"."
+last_modified_at: 2021-03-03T15:20:00
 ---
 
 <figure class="centered">
@@ -22,12 +23,12 @@ called [About Oracle apex and translations
 (2)](https://www.linkedin.com/pulse/oracle-apex-translations-2-gert-jan-paulissen/?trackingId=dpjSfVX%2FeD6KCXJMF1OHXw%3D%3D). His
 message was that is good to share knowledge as he is doing himself now
 too. And yeah, I whole-heartedly agree. And when my current boss wanted me to
-write about how I build Oracle Apex applications from the beginning till the
+write about how I build Oracle APEX applications from the beginning till the
 end, I thought let's do it before I leave the company. The funny thing is that
 I have been introduced to my current boss by another former manager that
 shares the same first name as the other manager. Thanks Harm I and II, for
 your gentle words. Thank you boss for pushing me to write about "How to build
-an Oracle Apex application".
+an Oracle APEX application".
 
 Already soon in my career I invented solutions for not installing applications
 manually. Sometimes the boss/manager/team did not see a value added right away
@@ -40,24 +41,24 @@ assemble the ideas I am going to present to you here.
 Actually I think I have enough material for a book or maybe even more. But
 let's just start with a Blog and see what's comes of it. I won't dive too much
 into details but I assure you that with the help of my ideas you are better
-prepared to build a serious Oracle Apex application. And you can always
+prepared to build a serious Oracle APEX application. And you can always
 contact or hire me if you need more explanation :).
 
 # What's in a name?
 
 A title is important and I hope that it describes well what I do want to share
 with you in this series of articles. It is not so much about how to use the
-back-end part (Oracle database) or the front-end (Oracle Apex). It is much
+back-end part (Oracle Database) or the front-end (Oracle APEX). It is much
 more about the tools, techniques and best practices around them in order to
-build, deploy and maintain an Oracle Apex application efficiently and
-correctly. Actually, Apex can be replaced by another front-end like Java ADF,
+build, deploy and maintain an Oracle APEX application efficiently and
+correctly. Actually, APEX can be replaced by another front-end like Java ADF,
 React, Angular or whatever.
 
 I have used the word **build** on purpose and not
 something like develop because I see an analogy with building a house. You
 don't build a house by just buying parts like a door and some tools. No you need a
 **plan**, an **architecture** if you prefer. And how often I see people
-beginning with creating a table, an Apex screen and then they think they are
+beginning with creating a table, an APEX screen and then they think they are
 doing well. Maybe their boss/client is happy because s/he sees something visible but
 IMO they just started without a plan. You just **DON'T** start with a door and
 some tools when you need to build a house, so do not make the same
@@ -89,18 +90,18 @@ or ...). Simple and predictable, so I see no reason to use another tool. I
 hope this convinces you to **never** again execute database migration scripts
 **manually**.
 
-Of course I have looked at the Supporting Objects feature of Apex but I think
+Of course I have looked at the Supporting Objects feature of APEX but I think
 it is only suitable for (demo) applications with a small number of
 database objects that do no change. As soon as you build a real application
 you will create a lot more database objects like packages and views and it
-becomes too difficult to use Apex Supporting Objects, at least that is my
-opinion. And do not forget that Apex is just the front-end so if you 
+becomes too difficult to use APEX Supporting Objects, at least that is my
+opinion. And do not forget that APEX is just the front-end so if you 
 decide to replace it by another front-end you also have to find another tool
 to run the migration scripts.
 
 So embrace the Unix philosophy and use Flyway to run database migration scripts.
 
-Another important point is to use the power of the Oracle database. It is an
+Another important point is to use the power of the Oracle Database. It is an
 expensive product but very powerful so use it thoroughly and get used to it. Take
 lessons, courses, read books, read Blogs but **invest** in it. It will really help
 you to build better.
@@ -159,8 +160,8 @@ packages if you do not want to have packages in the data layer.
 ### UI
 
 All User Interface logic. This means that this schema will be the parsing
-schema for Apex. Please note that you can have more than one parsing schema
-per Apex workspace so there is no problem having several applications with
+schema for APEX. Please note that you can have more than one parsing schema
+per APEX workspace so there is no problem having several applications with
 different parsing schemas in a workspace.
 
 ### EXT
@@ -176,7 +177,7 @@ may use an interface from this layer. The UI layer may use objects from this lay
 
 ## Tools, techniques and best practices
 
-### Oracle database and Oracle Apex
+### Oracle Database and Oracle APEX
 
 I have used [Virtualbox](https://www.virtualbox.org/) and the prebuilt virtual
 machine [Database App Development
@@ -187,10 +188,10 @@ interfere with others and I do not want that others interfere with me while I
 work. At a later stage you can always use an integration or test database to
 see if everything works well together.
 
-Keep in mind that you cannot import an Apex application into another Apex
-instance if the exported version is **higher** than the version of Apex to
-import into. So exporting an Apex 19.2 application will **not** import into
-Apex 18.2. So align all your Apex versions from development till production.
+Keep in mind that you cannot import an APEX application into another APEX
+instance if the exported version is **higher** than the version of APEX to
+import into. So exporting an APEX 19.2 application will **not** import into
+APEX 18.2. So align all your APEX versions from development till production.
 {: .notice--warning}
 
 ### Oracle SQL Developer Data Modeler
@@ -226,7 +227,7 @@ model (POM), Maven can manage a project's build, reporting and documentation
 from a central piece of information.
 
 So Maven will be the tool to automate several tasks like running Flyway,
-exporting and importing Apex applications or running unit tests.
+exporting and importing APEX applications or running unit tests.
 
 ### Flyway
 
@@ -256,6 +257,13 @@ A PL/SQL unit testing framework originally developed by Steven Feuerstein, we
 now have [version 3](http://utplsql.org/utPLSQL/latest/). An impressive piece
 of work and easy to use. In the Java community it is normal to unit test but
 not so in the Oracle community. This tool may convince you!
+
+### SonarQube
+
+A tool that might help with PL/SQL static code analysis is
+[SonarQube](https://www.sonarqube.org/features/multi-languages/plsql/). Used
+in combination with utPLSQL this tool will improve the quality of your
+application code. Please note that this tool is not open-source.
 
 ### Perl
 
@@ -287,8 +295,9 @@ pipeline based on Maven.
 # Conclusion
 
 I hope I have given you enough appetite to continue reading this series of
-articles about building Oracle applications. Apart from the Oracle database
-all tools are open source (and mature) so you can use that argument to convince your
-boss. And some tools also have a (paid) support option if that is needed.
+articles about building Oracle applications. Apart from the Oracle Database
+almost all tools are open source (and mature) so you can use that argument to
+convince your boss. And some tools also have a (paid) support option if that
+is needed.
 
 Stay tuned!

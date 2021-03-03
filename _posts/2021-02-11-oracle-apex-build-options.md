@@ -1,14 +1,14 @@
 ---
-title: Agile programming using Oracle Apex Build Options
+title: Agile programming using Oracle APEX Build Options
 categories: development
-tags: [ Oracle, Apex, Agile ]
+tags: [ Oracle, APEX, Agile ]
 permalink: /oracle-apex-build-options/
 classes: wide
 ---
 
-Last time I wanted to use a new feature of Apex 19.2, the multi-column Popup
-LOV **and** multi return list.  Traditionally the Apex Popup LOV just displays
-a description and returns a reference (key). Starting with Apex 19.2 you can
+Last time I wanted to use a new feature of APEX 19.2, the multi-column Popup
+LOV **and** multi return list.  Traditionally the APEX Popup LOV just displays
+a description and returns a reference (key). Starting with APEX 19.2 you can
 now show more than one column **and** return more than one column.  And what I
 wanted was to show a list of contacts and return name, code, telephone number
 and some more info. Till 19.2 I had to use dynamic Ajax calls to get each
@@ -16,7 +16,7 @@ column, an approach which worked (most of the time). So I wanted to use
 this new feature and it seemed to work ... till the page was refreshed and all
 returned columns were empty.
 
-The [list of Apex 19.2 known issues](https://www.oracle.com/tools/downloads/apex-downloads/apex-192-known-issues.html) described this bug well:
+The [list of APEX 19.2 known issues](https://www.oracle.com/tools/downloads/apex-downloads/apex-192-known-issues.html) described this bug well:
 
 > 30537256 - POPUP LOV: ADDITIONAL OUTPUT ITEMS GET CLEARED ON PAGE LOAD
 > With the new Popup LOV, it is possible to define 'Additional Output' items, which allow multiple LOV values to be returned into external page items or Interactive Grid columns.
@@ -38,6 +38,6 @@ The new application logic based on the Popup LOV can be constrained by the
 build option being True. And the old application logic can be constrained by
 the build option being False.
 
-Thanks, Apex, for this clever piece of work. So you can continue to develop
+Thanks, APEX, for this clever piece of work. So you can continue to develop
 nice features by just cleverly using build options and (de-)active them as
 necessary. Really Agile!

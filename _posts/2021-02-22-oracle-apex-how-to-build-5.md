@@ -1,12 +1,13 @@
 ---
-title: How to build an Oracle Apex application (5)
+title: How to build an Oracle APEX application (5)
 categories: development
-tags: [ Oracle, Apex, Git, Subversion, Maven, Flyway ]
+tags: [ Oracle, APEX, Git, Subversion, Maven, Flyway ]
 permalink: /oracle-apex-how-to-build-5/
 toc: true
 toc_label: "Table of contents"
 toc_icon: "database"
 excerpt: "This time: Git, Subversion, Maven, Flyway."
+last_modified_at: 2021-03-03T15:20:00
 ---
 
 <figure class="centered">
@@ -14,7 +15,7 @@ excerpt: "This time: Git, Subversion, Maven, Flyway."
 	<figcaption>Kharnagy, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons</figcaption>
 </figure>
 
-Last time in ["How to build an Oracle Apex application (4)"]({{ site.url }}{{
+Last time in ["How to build an Oracle APEX application (4)"]({{ site.url }}{{
 site.baseurl }}/oracle-apex-how-to-build-4/), I told you about the Oracle SQL
 Developer Data Modeler.
 
@@ -24,6 +25,9 @@ This time I will discuss the following tools: Git, Subversion, Maven and Flyway.
 
 The first tool I would like to discuss is one of the cornerstones of the build
 architecture.
+
+With Flyway all changes to the database are called migrations. Migrations can
+be either versioned or repeatable.
 
 ## Why migrations?
 
@@ -83,7 +87,7 @@ will find it and upgrade the database accordingly.
 
 ### Incremental migrations
 
-As the name already indicates these files are run only once in a
+Also called versioned migrations. As the name already indicates these files are run only once in a
 database. They are usually used for SQL commands that can execute only once:
 - CREATE ...
 - ALTER ...
@@ -179,8 +183,9 @@ migration scripts.
 There is another competitor of Flyway: Liquibase.
 
 I have investigated Liquibase long time ago and I saw recently that the
-Oracle SQLcl client supports Liquibase. I still prefer Flyway because it is so
-much easier to understand and use. And it handles PL/SQL code so much better.
+[Oracle SQLcl client](https://www.oracle.com/database/technologies/appdev/sqlcl.html)
+supports Liquibase. I still prefer Flyway because it is so much easier to
+understand and use. And it handles PL/SQL code so much better.
 
 I will quote this from an [oracle-base.com article](https://oracle-base.com/articles/misc/sqlcl-automating-your-database-deployments-using-sqlcl-and-liquibase):
 
@@ -193,7 +198,7 @@ I will quote this from an [oracle-base.com article](https://oracle-base.com/arti
 > - If they do include code objects, they assume each version of the code is in a new file. This means you're going to lose the conventional commit history of a file you would normally expect for code. Instead you have to manually diff between separate files.
 > - They assume people need to rollback changes to previous versions of the database through this mechanism. I think creating a rollback script for each schema change makes sense, but I think it's a bad idea to include it in this mechanism. In my opinion all changes should move forward. So a "rollback" is really a new change applied to the database that reverts the changes. This is especially true of code related functionality.
 >
-> The major issue for me is the way code objects are managed. This may not affect you if you never have code in the database, but for a PL/SQL developer, this feels like a show-stopper. As a result, I prefer to work using scripts, which are kept in source control, and use Liquibase as the deployment and sequencing mechanism. I'm sure many Liquibase users will not like this, and will think I'm using it incorrectly. That's fine. There's more discussion about script management here.
+> The major issue for me is the way code objects are managed. This may not affect you if you never have code in the database, but for a PL/SQL developer, this feels like a show-stopper. As a result, I prefer to work using scripts, which are kept in source control, and use Liquibase as the deployment and sequencing mechanism. I'm sure many Liquibase users will not like this, and will think I'm using it incorrectly. That's fine. There's more discussion about script management [here](https://oracle-base.com/articles/misc/liquibase-and-source-control-changes-to-scripts-over-time).
 
 I can only add: if you prefer to have your PL/SQL code in a script why not
 your tables and so on (the incremental scripts)?
@@ -204,7 +209,7 @@ I rest my case.
 
 The reason I have chosen Maven to be the build integration tool is its
 excellent support for Flyway and Jenkins. It enables you to do `Continuous
-Integration`. And yes, it is used mainly by `Java` projects but who cares!
+Integration`. And yes, it is used mainly by `Java` projects but it can perfectly be used in a project integrating several technologies.
 
 There is a lot of documentation about Maven but for building Oracle projects
 you can just begin with the:
@@ -218,7 +223,9 @@ project.
 
 ## Tools
 
-The tools used nowadays are Git and Subversion.
+The tools used nowadays are Git and Subversion. Git is now the standard and I
+would like to have used it throughout but there were two areas where I had to
+resort to Subversion.
 
 ### Git
 
@@ -227,16 +234,18 @@ GitHub.com, the standard Open Source site. Not a real choice thus.
 
 ### Subversion
 
-Subversion is used because Oracle SQL Developer Data Modeler only supports
+Subversion is used because Oracle SQL Developer Data Modeler **only** supports
 this version control tool. However, luckily there is a Git Subversion bridge
 that allows you to treat a Git repository as a Subversion repository.
 
 Another advantage of Subversion is that it allows you to use the [Maven SCM
 plugin](https://maven.apache.org/scm/maven-scm-plugin/) with the `scm:update`
 command. This comes in handy when you are on a Citrix server and have no way
-to use the command line to clone (checkout) the repository for instance. Then it is
-**very** useful to `scm:checkout` your repository once and later update it. For one
-reason or another this `scm:update` comand does not seem to work with Git.
+to use the command line to clone (checkout) the repository for instance. Then
+it is **very** useful to `scm:checkout` your repository once and later update
+it. For one reason or another this scm:update command does not seem to work
+with the Git Java implementation of the Maven SCM plugin (remember no
+command line git allowed so Java needed).
 
 So that's why I add this code in the project parent POM:
 
@@ -252,14 +261,17 @@ Github.com](https://docs.github.com/en/github/importing-your-projects-to-github/
 ## Branching or not?
 
 I am not a big fan of branching, especially not in a database environment. I
-prefer to have a development process where you implement features. The code
-changes initially do not impact production code by using constructs like
-conditional compiling (available since Oracle 10) and Apex Build Options (or
-if nothing else is available if/then/else) based on a configuration (for
-instance a package header defining some boolean constants). Those
-constructions allow you to enable/disable parts of the code. In the database
-you could even go further using Edition Based Redefinition (EBR) but that
-seems only necessary for applications running 24x7.
+prefer to have a development process where you develop your changes as feature
+toggles (feature on/off). The changes initially do not impact production code
+by using constructs like conditional compiling (available since Oracle Database 10) and
+APEX Build Options (or if nothing else is available if/then/else) based on a
+configuration (for instance a package header defining some boolean
+constants). Those constructions allow you to enable/disable parts of the
+code. In the database you could even go further using Edition Based
+Redefinition (EBR) but that seems only necessary for applications running
+24x7. EBR allows you to run multiple versions of packages and views in
+parallel - depending on the application or the user, the desired version of
+each database object is selected.
 
 # Conclusion
 

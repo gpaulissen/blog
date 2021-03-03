@@ -1,13 +1,14 @@
 ---
-title: How to build an Oracle Apex application (4)
+title: How to build an Oracle APEX application (4)
 categories: development
-tags: [ Oracle, Apex, DataModeling ]
+tags: [ Oracle, APEX, DataModeling ]
 permalink: /oracle-apex-how-to-build-4/
 toc: true
 toc_label: "Table of contents"
 toc_icon: "database"
 excerpt: "This time: Oracle SQL Developer Data Modeler."
 classes: wide
+last_modified_at: 2021-03-03T15:20:00
 ---
 
 <figure class="centered">
@@ -15,8 +16,8 @@ classes: wide
 	<figcaption>Kharnagy, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons</figcaption>
 </figure>
 
-Last time in ["How to build an Oracle Apex application (3)"]({{ site.url }}{{
-site.baseurl }}/oracle-apex-how-to-build-3/), I told you about the Oracle database and Oracle Apex.
+Last time in ["How to build an Oracle APEX application (3)"]({{ site.url }}{{
+site.baseurl }}/oracle-apex-how-to-build-3/), I told you about the Oracle Database and Oracle APEX.
 
 This time I will discuss Oracle SQL Developer Data Modeler.
 
@@ -49,7 +50,7 @@ corporate domains XML file if you prefer.
 ### Relational Models
 
 Each Logical Model may be transformed into a Relation Model, one for Oracle
-12c, Oracle 12cR2 and so on. This allows you to use the features of those versions.
+Database 12c, Oracle Database 12cR2 and so on. This allows you to use the features of those versions.
 
 My preference is to just one relational model per Logical Model to keep it simple.
 
@@ -81,8 +82,8 @@ rules](http://rwijk.blogspot.nl/2008/07/implementing-business-rules.html) by
 Rob van Wijk.
 
 I have had difficulties with constraints implemented by materialized views
-with refresh fast on commit in an Apex environment. Maybe I did it wrong, maybe the database version
-(Oracle 12) was a little buggy or maybe it works just nice in theory. I resorted to
+with refresh fast on commit in an APEX environment. Maybe I did it wrong, maybe the database version
+(Oracle Database 12) was a little buggy or maybe it works just nice in theory. I resorted to
 triggers and PL/SQL.
 {: .notice--warning}
 
@@ -107,8 +108,11 @@ One of the features I can really recommend are the `Design Rules And Transformat
 
 ### Design Rules
 
-This is the `LINT` like tool of Data Modeler. Applicable for the Logical Model
-and Relational Models as well. 
+This is the [`LINT`](https://en.wikipedia.org/wiki/Lint_(software)) like tool
+of Data Modeler, an analysis tool that flags errors,
+[bugs](https://en.wikipedia.org/wiki/Software_bug), stylistic errors and
+suspicious constructs. Applicable for both the Logical Model and Relational
+Models.
 
 ### Custom Transformation Scripts
 
