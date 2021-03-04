@@ -1,13 +1,13 @@
 ---
 title: How to build an Oracle APEX application (6)
 categories: development
-tags: [ Oracle, APEX, DevOps, SqlDeveloper, utPLSQL, SonarQube, Perl, Ant, DevOps ]
+tags: [ Oracle, APEX, DevOps, SqlDeveloper, utPLSQL, SonarQube, Perl, Ant, DevOps, Jenkins ]
 permalink: /oracle-apex-how-to-build-6/
 toc: true
 toc_label: "Table of contents"
 toc_icon: "database"
 excerpt: "This last article: Oracle SQL Developer, utPLSQL, SonarQube, Perl, Ant and DevOps."
-last_modified_at: 2021-03-03T15:21:00
+last_modified_at: 2021-03-04T12:26:00
 ---
 
 <figure class="centered">
@@ -19,7 +19,7 @@ Last time in ["How to build an Oracle APEX application (5)"]({{ site.url }}{{
 site.baseurl }}/oracle-apex-how-to-build-5/), I told you about Git, Subversion, Maven and Flyway.
 
 In this final article, I will discuss the following tools & methods: Oracle SQL Developer,
-utPLSQL, SonarCube, Perl, Ant and DevOps.
+utPLSQL, SonarQube, Perl, Ant and DevOps.
 
 # Oracle SQL Developer
 
@@ -366,7 +366,7 @@ any project.
 
 Another long time favorite that I use for executing simple tasks on the Operating
 System where dependencies are necessary. I use Ant to export and import APEX
-applications. It invokes the [Oracle SQLcl client](https://www.oracle.com/database/technologies/appdev/sqlcl.html) with the appropiate
+applications. It invokes the [Oracle SQLcl client](https://www.oracle.com/database/technologies/appdev/sqlcl.html) with the appropriate
 switches. Ant integrates well with Maven due to the [Apache Maven AntRun Plugin](https://maven.apache.org/plugins/maven-antrun-plugin/).
 
 > SQLcl is a new Java-based command-line interface for Oracle Database.
@@ -421,7 +421,7 @@ The following table shows the match between DevOps processes and tools:
 
 Please note that I have not mentioned Jenkins as tool above. Jenkins is the tool
 to invoke Maven on a remote integration server. Locally you do not need Jenkins: you just run
-the appropiate Maven commands from the command line.
+the appropriate Maven commands from the command line.
 {: .notice--info}
 
 An important aspect that I may not have mentioned before is that a **Maven build**

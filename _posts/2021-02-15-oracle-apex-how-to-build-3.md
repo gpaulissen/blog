@@ -7,7 +7,7 @@ toc: true
 toc_label: "Table of contents"
 toc_icon: "database"
 excerpt: "This time I will elaborate on the base tools, the Oracle Database and Oracle APEX."
-last_modified_at: 2021-03-03T15:20:00
+last_modified_at: 2021-03-04T12:26:00
 ---
 
 <figure class="centered">
@@ -51,37 +51,47 @@ obscure front-end expertise. This is a best practice since long, just do it.
 
 And for those people who like database independence: I just like to get things
 done **well**, so I use PL/SQL since that is just the best language to work
-with the Oracle Database. I do not want to use JDBC/ODBC when I can use
-PL/SQL. And every other well designed database has some kind of language like
-PL/SQL. So if you want to be independent why not write a language layer for
-each database having the same functionality.
+with the Oracle Database. I do not want to use JDBC (in combination with Java)
+or ODBC (in combination with .NET/Python) when I can use PL/SQL. And every
+other well designed database has some kind of language like PL/SQL. So if you
+want to be independent why not write a language layer for each database having
+the same functionality.
 
-One more last thing. I have seen a lot of projects with Java developers
-using Jdbc and Oracle and what has surprised me very often is the ignorance of
-the database they work with. The Java code just issues statements against the
+One more last thing. I have seen a lot of projects with Java developers using
+JDBC and Oracle and what has surprised me very often is the ignorance of the
+database they work with. The Java code just issues statements against the
 tables, no invocation of PL/SQL (package) procedures or functions. All
 functionality in the middle tier, not in the database. And the funny thing is
-that Oracle even has an Object Oriented layer: Oracle Object Types. What a pity
-that a large part of the Oracle functionality is not used by those Java programmers.
+that Oracle even has an Object Oriented layer: Oracle Object Types. It is true
+that Object Types are more limited than Java classes but I have created some
+nice applications based on the Oracle OO concept. You can also use an Object
+Type as a kind of glue between Oracle and another language like Java. And as a
+Java programmer you can also invoke REST APIs powered by PL/SQL. What a pity
+that a large part of the Oracle functionality is not used by those Java
+programmers.
 
 ## What version?
 
-My advice is to use the latest major version or the one before. So for an [Oracle
-Database nowadays](https://en.wikipedia.org/wiki/Oracle_Database) this means version
-21c or 19c (equivalent with 12.2.0.3). This is a
-simple advice for any software and it assures you that you keep up with
-enhancements, (security) patches and so on. Do not wait to long. Again I
-will use the analogy with a house: you'd better paint and maintain it
-regularly than wait till the wood has rotten.
+My advice is to use the latest major version or the one before. So for an
+[Oracle Database nowadays](https://en.wikipedia.org/wiki/Oracle_Database) this
+means version 21c or the long-term support (LTS) release 19c (equivalent with
+12.2.0.3). This is a simple advice for any software and it assures you that
+you keep up with enhancements, (security) patches and so on. Do not wait to
+long. Again I will use the analogy with a house: you'd better paint and
+maintain it regularly than wait till the wood has rotten.
 
 ## What platform?
 
 I have talked about it briefly in the [first post]({{ site.url }}{{
 site.baseurl }}/oracle-apex-how-to-build-1/) but for a development environment
-I would just download a virtual development machine. It comes with the
-database and APEX integrated on an Unbreakable Linux Operation System. Simple
-to use and backup and you can be the DBA without bothering anyone. And free of
-charge for a development environment.
+I would just download the prebuilt virtual machine [Database App Development
+VM](https://www.oracle.com/downloads/developer-vm/community-downloads.html)
+from Oracle for my development environment. It comes with the database and
+APEX integrated on an Unbreakable Linux Operation System. Simple to use and
+backup and you can be the DBA without bothering anyone. And free of charge for
+a development environment.
+
+![Database App Development VM]({{ site.url }}{{ site.baseurl }}/assets/images/database-vm.png)
 
 Do not forget to make snapshots (backups) regularly. It has saved my life
 quite a few times.

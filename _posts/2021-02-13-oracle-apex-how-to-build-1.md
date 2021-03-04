@@ -7,7 +7,7 @@ toc: true
 toc_label: "Table of contents"
 toc_icon: "database"
 excerpt: "An introduction on \"How to build an Oracle APEX application\"."
-last_modified_at: 2021-03-03T15:20:00
+last_modified_at: 2021-03-04T12:26:00
 ---
 
 <figure class="centered">
@@ -99,7 +99,9 @@ opinion. And do not forget that APEX is just the front-end so if you
 decide to replace it by another front-end you also have to find another tool
 to run the migration scripts.
 
-So embrace the Unix philosophy and use Flyway to run database migration scripts.
+So embrace the Unix philosophy and use Flyway to run database migration
+scripts. I will describe Flyway in more detail in ["How to build an Oracle APEX application (5)"]({{ site.url }}{{
+site.baseurl }}/oracle-apex-how-to-build-5/).
 
 Another important point is to use the power of the Oracle Database. It is an
 expensive product but very powerful so use it thoroughly and get used to it. Take
@@ -196,7 +198,7 @@ APEX 18.2. So align all your APEX versions from development till production.
 
 ### Oracle SQL Developer Data Modeler
 
-Maybe lesser known than its big brother Oracle SQL Developer but a tool that
+Maybe less well known than its big brother Oracle SQL Developer but a tool that
 allows you to build a great model (plan) of your database application. You can
 use various modeling techniques like Entity Relationship Modeling and a lot, lot
 more. It even allows you to create database scripts or migration scripts that

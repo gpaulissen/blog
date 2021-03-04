@@ -8,7 +8,7 @@ toc_label: "Table of contents"
 toc_icon: "database"
 excerpt: "This time: Oracle SQL Developer Data Modeler."
 classes: wide
-last_modified_at: 2021-03-03T15:20:00
+last_modified_at: 2021-03-04T12:26:00
 ---
 
 <figure class="centered">
@@ -37,7 +37,9 @@ a lot of problems. A simple SQL script to create the view is just enough.
 
 ### Logical Model
 
-This is the Entity Relationship Model area.
+This is the Entity Relationship Model area where you can construct Entity Relationship Diagrams (ERD) like this:
+
+![ERD]({{ site.url }}{{ site.baseurl }}/assets/images/erd.png)
 
 You should really take your time to design your model and to verify it using
 the Design Rules described later on. This is the foundation of your
@@ -108,7 +110,7 @@ One of the features I can really recommend are the `Design Rules And Transformat
 
 ### Design Rules
 
-This is the [`LINT`](https://en.wikipedia.org/wiki/Lint_(software)) like tool
+This is the [lint](https://en.wikipedia.org/wiki/Lint_(software)) like tool
 of Data Modeler, an analysis tool that flags errors,
 [bugs](https://en.wikipedia.org/wiki/Software_bug), stylistic errors and
 suspicious constructs. Applicable for both the Logical Model and Relational

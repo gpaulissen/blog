@@ -7,7 +7,7 @@ toc: true
 toc_label: "Table of contents"
 toc_icon: "database"
 excerpt: "This time: Git, Subversion, Maven, Flyway."
-last_modified_at: 2021-03-03T15:20:00
+last_modified_at: 2021-03-04T12:26:00
 ---
 
 <figure class="centered">
@@ -27,7 +27,7 @@ The first tool I would like to discuss is one of the cornerstones of the build
 architecture.
 
 With Flyway all changes to the database are called migrations. Migrations can
-be either versioned or repeatable.
+be either *versioned* or *repeatable*.
 
 ## Why migrations?
 
@@ -209,7 +209,8 @@ I rest my case.
 
 The reason I have chosen Maven to be the build integration tool is its
 excellent support for Flyway and Jenkins. It enables you to do `Continuous
-Integration`. And yes, it is used mainly by `Java` projects but it can perfectly be used in a project integrating several technologies.
+Integration`. And yes, it is used mainly by `Java` projects but it can
+perfectly be used in a project integrating several technologies.
 
 There is a lot of documentation about Maven but for building Oracle projects
 you can just begin with the:
@@ -275,7 +276,7 @@ each database object is selected.
 
 # Conclusion
 
-In this artcile I have shown you the reasons for choosing Flyway, Maven, Git and
+In this article I have shown you the reasons for choosing Flyway, Maven, Git and
 Subversion. The integration between them is (very) good and thus it allows you to do
 `Continuous Integration`.
 
