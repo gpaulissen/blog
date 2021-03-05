@@ -128,6 +128,8 @@ integrates with Maven thanks to the
 [utPLSQL-maven-plugin](https://github.com/utPLSQL/utPLSQL-maven-plugin). And
 there is a plugin too for SQL Developer, see [Running utPLSQL Tests in SQL Developer](https://www.salvis.com/blog/2019/07/06/running-utplsql-tests-in-sql-developer/).
 
+utPLSQL also has [a code coverage report](http://utplsql.org/utPLSQL/v3.0.0/userguide/coverage.html).
+
 Do not wait any longer, just **unit test** it!
 
 I add unit test code to my packages and the test code is conditional, guarded
@@ -138,7 +140,34 @@ production (where utPLSQL should not be installed).
 
 The following sections show an example.
 
+## Conditional compilation
+
+As I said above the test code is conditional (only active when utPLSQL is
+installed in a development environment) and I use Oracle conditional
+compilation for that.
+
+I will quote from this article [from oracle-base.com about conditional
+compilation](https://oracle-base.com/articles/10g/conditional-compilation-10gr2):
+
+> Conditional compilation allows PL/SQL code to be tailored to specific
+> environments by selectively altering the source code based on compiler
+> directives. It is considered a new feature of Oracle 10g Release 2, but is
+> available in Oracle 10g Release 1 (10.1.0.4.0).
+>
+> Compiler flags are identified by the "$$" prefix, while conditional control is
+> provided by the $IF-$THEN-$ELSE syntax.
+>
+> ```
+> $IF boolean_static_expression $THEN text
+>   [ $ELSIF boolean_static_expression $THEN text ]
+>   [ $ELSE text ]
+> $END
+> ```
+
 ## Configuration package
+
+This package specification defines the boolean constants that can be used by
+conditional compilation as you will see in the two following sections:
 
 ```
 create or replace package cfg_pkg
@@ -206,6 +235,10 @@ end data_api_pkg;
 
 You can use any name you like for the unit test procedure but adding `ut_` as
 prefix is the convention of the previous versions of utPLSQL.
+
+Please note that the unit test procedure `ut_raise_error` is only defined when
+`cfg_pkg.c_testing` is true due to the conditional compilation construction.
+{: .notice--info}
 
 ## A package body with a function/procedure to unit test
 
@@ -335,7 +368,33 @@ $end
 end data_api_pkg;
 ```
 
+Please note that the unit test procedure `ut_raise_error` is only defined when
+`cfg_pkg.c_testing` is true due to the conditional compilation construction. And
+the [debugging sections with package
+dbug](https://sourceforge.net/projects/transferware/files/dbug/5.0.0/)
+are also only active when the `cfg_pkg.c_debugging` constant is true.
+{: .notice--info}
+
 # SonarQube
+
+A small  introduction:
+
+> SonarQube empowers all developers to write cleaner and safer code.
+> Join an Open Community of more than 200k dev teams.
+> Enhance Your Workflow with Continuous Code Quality & Code Security
+> Thousands of automated Static Code Analysis rules, protecting your app on multiple fronts, and guiding your team.
+>
+> <cite><a href="https://www.sonarqube.org/">Your teammate for Code Quality and Code Security</a></cite>
+
+So where does SonarQube fit in the DevOps picture? I consider it a complement
+of utPLSQL and it covers the code quality and security part where utPLSQL
+covers the functionality part of your application.
+
+So SonarQube allows you to make code quality and security part of your
+development and test cycle and it will warn you when there is a defect of any
+kind. If you use it with a build tool like Maven it will stop the build when
+there is a defect since that is treated as an error. So you have immediate
+feedback. 
 
 As shown by the [SonarQube PL/SQL rules](https://rules.sonarsource.com/plsql)
 this static code analysis tool improves the quality of code. It is a
@@ -415,9 +474,9 @@ The following table shows the match between DevOps processes and tools:
 | Building    	 | Maven (using Flyway, Ant) |
 | Testing     	 | Maven (using utPLSQL, SonarQube) |
 | Packaging   	 | Maven (using [Artifactory](https://jfrog.com/artifactory/), [Nexus](https://www.sonatype.com/nexus/repository-pro) or GitHub) |
-| Releasing   	 | N/A |
-| Configuring 	 | N/A |
-| Monitoring 		 | N/A |
+| Releasing   	 | Not covered by any of the tools I have described |
+| Configuring 	 | Not covered by any of the tools I have described |
+| Monitoring 		 | Not covered by any of the tools I have described |
 
 Please note that I have not mentioned Jenkins as tool above. Jenkins is the tool
 to invoke Maven on a remote integration server. Locally you do not need Jenkins: you just run
