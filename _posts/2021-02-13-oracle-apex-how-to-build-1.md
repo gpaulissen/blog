@@ -118,7 +118,7 @@ apply all the best practices there are.
 > <cite><a href="https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants">Isaac Newton in 1675</a></cite>
 
 I have to mention Oracle gurus like Tom Kyte and Steven Feuerstein
-but I should surely mention a fellow Dutchman Rob de Wijk who has written
+but I should surely mention a fellow Dutchman Rob van Wijk who has written
 Blogs about [implementing business rules](http://rwijk.blogspot.nl/2008/07/implementing-business-rules.html) in
 2008 and [Professional Software Development using Oracle Application Express](http://www.rwijk.nl/AboutOracle/psdua.pdf) in 2013.
 We are living in 2021 now and things have advanced but I have used his ideas to lay the foundation.
