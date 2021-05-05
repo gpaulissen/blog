@@ -40,7 +40,7 @@ pip --version
 To install the BML converters, issue this command from a command line:
 
 ```
-pip install bridge-markup
+pip install bridge-markup --upgrade
 ```
 
 ## Installation from source
@@ -76,9 +76,9 @@ pip install -r test_requirements.txt
 Issue these commands to verify the installation:
 
 ```
-bml2bss -h
-bml2html -h
-bml2latex -h
+bml2bss --version
+bml2html --version
+bml2latex --version
 ```
 
 # Install LaTeX
