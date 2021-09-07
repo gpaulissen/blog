@@ -28,13 +28,7 @@ alter session set plscope_settings = 'IDENTIFIERS:ALL';
 
 and then recompile your PL/SQL object(s).
 
-## Some code checking rules
-
-Amongst the many PL/SQL rules of SonarQube I found these:
-<ul>
-<li>Unused local variables should be removed</li>
-<li>Unused assignments should be removed</li>
-</ul>
+## Some code checks
 
 Lucas Jellema identified these:
 <ul>
@@ -43,15 +37,35 @@ Lucas Jellema identified these:
 <li>Variables that are assigned but never used (after that assignment)</li>
 </ul>
 
-The rules of SonarQube are a subset of those found by Lucas Jellema, so I will
-just use his rules for the native PL/SQL checker. In his article Lucas Jellema
-used a simple example and did not take into account a variable having the same
-name that exists in more than one function or procedure. So we have to take
-care of that too.
+In his article Lucas Jellema used a simple example and did not take into
+account a variable having the same name that exists in more than one function
+or procedure. So we have to take care of that too.
+
+Besides those mentioned above you can think of these checks too:
+<ul>
+<li>Output parameters should be assigned a value</li>
+<li>Functions should not have output parameters</li>
+<li>Unused procedure and function parameters</li>
+<li>Variables getting out of scope</li>
+<li>Do not defined global public variables but use setters and getters</li>
+</ul>
 
 ## A more complex example
 
-This contains procedures declaring the same variable. 
+This package specification should only complain about global public variables:
+
+```
+[1] create or replace package ut_code_check_pkg is
+[2] 
+[3] "abcd" constant varchar2(4 char) := 'abcd';
+[4] 
+[5] -- Do not defined global public variables but use setters and getters
+[6] l_var varchar2(4 char);
+[7] 
+[8] end ut_code_check_pkg;
+```
+
+This package body should complain about all other checks:
 
 ```
 [01] create or replace package body ut_code_check_pkg is
@@ -111,7 +125,41 @@ This contains procedures declaring the same variable.
 [55]   end if;
 [56] end ut_var_assign_after_reference;
 [57] 
-[58] end ut_code_check_pkg;
+[58] -- Output parameters should be assigned a value
+[59] -- Unused procedure and function parameters
+[60] procedure ut_output_parameters_not_set(p_i in varchar2, p_io in out varchar2, p_o out varchar2)
+[61] is
+[62] begin
+[63]   null;
+[64] end;
+[65] 
+[66] -- Functions should not have output parameters
+[67] -- Unused procedure and function parameters
+[68] function ut_function_output_parameters(p_i in varchar2, p_io in out varchar2, p_o out varchar2)
+[69] return varchar2
+[70] is
+[71] begin
+[72]   return null;
+[73] end;
+[74] 
+[75] -- Variables getting out of scope
+[76] procedure ut_variables_out_of_scope
+[77] is
+[78]   i_idx integer;
+[79] begin
+[80]   for i_idx in 1..2
+[81]   loop
+[82]     null;
+[83]   end loop;
+[84] 
+[85]   declare
+[86]     i_idx exception;
+[87]   begin
+[88]     null;
+[89]   end;
+[90] end;
+[91] 
+[92] end ut_code_check_pkg;
 ```
 
 ## How does PL/Scope store the information?
@@ -178,6 +226,30 @@ gives this result set:
 |52|L_VAR|VARIABLE|REFERENCE|39|36|
 |54|L_VAR|VARIABLE|ASSIGNMENT|40|36|
 |54|abcd|CONSTANT|REFERENCE|41|40|
+|60|UT_OUTPUT_PARAMETERS_NOT_SET|PROCEDURE|DECLARATION|44|1|
+|60|UT_OUTPUT_PARAMETERS_NOT_SET|PROCEDURE|DEFINITION|45|44|
+|60|P_I|FORMAL IN|DECLARATION|46|45|
+|60|VARCHAR2|CHARACTER DATATYPE|REFERENCE|47|46|
+|60|P_IO|FORMAL IN OUT|DECLARATION|48|45|
+|60|VARCHAR2|CHARACTER DATATYPE|REFERENCE|49|48|
+|60|P_O|FORMAL OUT|DECLARATION|50|45|
+|60|VARCHAR2|CHARACTER DATATYPE|REFERENCE|51|50|
+|68|UT_FUNCTION_OUTPUT_PARAMETERS|FUNCTION|DECLARATION|52|1|
+|68|UT_FUNCTION_OUTPUT_PARAMETERS|FUNCTION|DEFINITION|53|52|
+|68|P_I|FORMAL IN|DECLARATION|54|53|
+|68|VARCHAR2|CHARACTER DATATYPE|REFERENCE|55|54|
+|68|P_IO|FORMAL IN OUT|DECLARATION|56|53|
+|68|VARCHAR2|CHARACTER DATATYPE|REFERENCE|57|56|
+|68|P_O|FORMAL OUT|DECLARATION|58|53|
+|68|VARCHAR2|CHARACTER DATATYPE|REFERENCE|59|58|
+|69|VARCHAR2|CHARACTER DATATYPE|REFERENCE|60|53|
+|76|UT_VARIABLES_OUT_OF_SCOPE|PROCEDURE|DECLARATION|61|1|
+|76|UT_VARIABLES_OUT_OF_SCOPE|PROCEDURE|DEFINITION|62|61|
+|78|I_IDX|VARIABLE|DECLARATION|63|62|
+|78|INTEGER|SUBTYPE|REFERENCE|64|63|
+|80|I_IDX|ITERATOR|DECLARATION|65|62|
+|86|I_IDX|EXCEPTION|DECLARATION|66|62|
+
 
 Some constructs:
 
@@ -218,10 +290,14 @@ u (the USAGE_ID of its defining function/procedure), there is no reference for
 the same variable v and USAGE_CONTEXT_ID u. References in other procedures are thus
 not taken into account.
 
+Please note that this check is never performed for a package (or object type) specification.
+
 ### Variables that are referenced but never assigned a value (before that reference)
 
 If there is no assignment between the declaration and the first reference then
 such a variable falls into this category.
+
+Please note that this check is never performed for a package (or object type) specification.
 
 ### Variables that are assigned a value but never used (after that assignment)
 
@@ -229,3 +305,36 @@ If there is a reference before but **not** after the last assignment, then
 such a variable falls into this category. if there would not have been a
 reference before the last assignment neither then it falls into the first
 category of unused variables because there are zero references.
+
+Please note that this check is never performed for a package (or object type) specification.
+
+### Output parameters should be assigned a value
+
+An item of TYPE "FORMAL IN OUT" or "FORMAL OUT" must be assigned a value later
+on. The USAGE_CONTEXT_ID of the parameter is the USAGE_ID of the procedure
+definition.
+
+### Functions should not have output parameters
+
+This is considered bad practice. An item of TYPE "FORMAL IN OUT" or "FORMAL
+OUT" must not be part of a function.
+
+### Unused procedure and function parameters
+
+A parameter (TYPE "FORMAL IN", "FORMAL IN OUT" or "FORMAL OUT") is never
+referenced nor assigned as value.
+
+### Variables getting out of scope
+
+When a function/procedure declares a variable and a FOR LOOP uses an iterator
+with the same name, the original variable is out of scope. The same
+when a new DECLARE block declare a variable with the same name.
+
+This is detected by having the same NAME with TYPE "DECLARATION" and the same USAGE_CONTEXT_ID.
+
+### Do not defined global public variables but use setters and getters
+
+It is considered bad practice to define a variable in in package
+specification. Use setters and getters instead.
+
+Please note that this check is **only** performed for a package specification.
