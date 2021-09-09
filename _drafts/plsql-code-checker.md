@@ -315,7 +315,7 @@ used after that assignment.
 
 I will not only consider variables (or constants) but any identifier type
 except specification, body, function or procedure (already covered by PL/SQL
-warnings). After all, it is nice to know which cursors, exceptions, etcetera
+warning PLW-06006). After all, it is nice to know which cursors, exceptions, etcetera
 are not used as well.
 
 When you have an identifier that is not a declaration, the idea is to find its
@@ -384,12 +384,13 @@ same name.
 This is detected by having declarations with the same NAME and
 USAGE_CONTEXT_ID, i.e. defined in the same body/function/procedure.
 
-## PLC-00007 - Do not define global public variables but use setters and getters
+## Do not define global public variables but use setters and getters
 
-It is considered bad practice to define a variable in in package
-specification. Use setters and getters instead.
+Already taken care of by PL/SQL warnings:
 
-Please note that this check is **only** performed for a package specification.
+```
+PL/SQL WARNING PLW-06026: package specification exposes global variable L_VAR
+```
 
 # Example queries
 
