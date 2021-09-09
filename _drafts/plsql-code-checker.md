@@ -1,7 +1,7 @@
 ---
 title: A native PL/SQL code checker
 categories: development
-tags: [ Oracle, APEX, DevOps ]
+tags: [ Oracle, DevOps, Quality ]
 permalink: /native-plsql-code-checker/
 classes: wide
 toc: true
@@ -52,20 +52,20 @@ and then recompile your PL/SQL object(s).
 ## Some code checks
 
 Lucas Jellema identified these:
-* Variables that are referenced but never assigned (before that reference)
-* Variables that are declared but never used
-* Variables that are assigned but never used (after that assignment)
+1. Variables that are declared but never used
+2. Variables that are referenced but never assigned a value (before that reference)
+3. Variables that are assigned a value but never used (after that assignment)
 
 In his article Lucas Jellema used a simple example and did not take into
 account a variable having the same name that exists in more than one function
 or procedure. So we have to take care of that too.
 
 Besides those mentioned above you can think of these checks too:
-* Output parameters should be assigned a value
-* Functions should not have output parameters
-* Unused procedure and function parameters
-* Variables getting out of scope
-* Do not define global public variables but use setters and getters
+4. Output parameters should be assigned a value
+5. Functions should not have output parameters
+6. Identifiers shadowing another identifier
+7. Unused procedure and function parameters
+8. Do not define global public variables but use setters and getters
 
 ## A more complex example
 
@@ -163,7 +163,7 @@ This package body should complain about all other checks:
 [72]   return null;
 [73] end;
 [74] 
-[75] -- Variables getting out of scope
+[75] -- Identifiers shadowing another identifier
 [76] procedure ut_variables_out_of_scope
 [77] is
 [78]   i_idx integer;
@@ -367,13 +367,6 @@ definition.
 This is considered bad practice. An item of TYPE "FORMAL IN OUT" or "FORMAL
 OUT" must not be part of a function.
 
-## Unused procedure and function parameters
-
-A parameter (TYPE "FORMAL IN", "FORMAL IN OUT" or "FORMAL OUT") is never
-referenced nor assigned as value.
-
-In fact this is already covered by check PLC-00001.
-
 ## PLC-00006 - Identifiers shadowing another identifier
 
 When a function/procedure declares a variable and a FOR LOOP uses an iterator
@@ -383,6 +376,13 @@ same name.
 
 This is detected by having declarations with the same NAME and
 USAGE_CONTEXT_ID, i.e. defined in the same body/function/procedure.
+
+## Unused procedure and function parameters
+
+A parameter (TYPE "FORMAL IN", "FORMAL IN OUT" or "FORMAL OUT") is never
+referenced nor assigned as value.
+
+In fact this is already covered by check PLC-00001.
 
 ## Do not define global public variables but use setters and getters
 
@@ -531,18 +531,18 @@ This is the result set (skipping some columns):
 
 |LINE|POSITION|TEXT|
 |---:|-------:|:---|
-|22|3|PLC-00001: variable L_VAR is declared but never used|
-|29|3|PLC-00001: variable L_VAR is declared but never used|
-|36|3|PLC-00001: variable L_VAR is declared but never used|
-|60|40|PLC-00001: parameter P_I is declared but never used|
-|60|57|PLC-00001: parameter P_IO is declared but never used|
-|60|79|PLC-00001: parameter P_O is declared but never used|
-|68|40|PLC-00001: parameter P_I is declared but never used|
-|68|57|PLC-00001: parameter P_IO is declared but never used|
-|68|79|PLC-00001: parameter P_O is declared but never used|
-|78|3|PLC-00001: variable I_IDX is declared but never used|
-|80|7|PLC-00001: iterator I_IDX is declared but never used|
-|86|5|PLC-00001: exception I_IDX is declared but never used|
+|22|3|PLC-00001: variable "L_VAR" is declared but never used|
+|29|3|PLC-00001: variable "L_VAR" is declared but never used|
+|36|3|PLC-00001: variable "L_VAR" is declared but never used|
+|60|40|PLC-00001: parameter "P_I" is declared but never used|
+|60|57|PLC-00001: parameter "P_IO" is declared but never used|
+|60|79|PLC-00001: parameter "P_O" is declared but never used|
+|68|40|PLC-00001: parameter "P_I" is declared but never used|
+|68|57|PLC-00001: parameter "P_IO" is declared but never used|
+|68|79|PLC-00001: parameter "P_O" is declared but never used|
+|78|3|PLC-00001: variable "I_IDX" is declared but never used|
+|80|7|PLC-00001: iterator "I_IDX" is declared but never used|
+|86|5|PLC-00001: exception "I_IDX" is declared but never used|
 
 It seems to work:
 * "L_VAR" is reported as unused in those procedures where it is not referenced.
