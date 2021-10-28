@@ -297,7 +297,7 @@ has as USAGE_CONTEXT_ID the USAGE_ID of the variable.
 On line 38 the reference to "L_VAR" has a USAGE_CONTEXT_ID of 24, being the
 USAGE_ID of procedure definition "UT_VAR_ASSIGN_DIRECT".
 
-### An initialization thru another procedure
+### An initialization through another procedure
 
 In line 45 the variable is initialized by another procedure. Given the fact
 that this procedure is defined in the same unit and it has just one OUT
@@ -340,7 +340,7 @@ If there is no assignment between the declaration and the first reference then
 such a variable falls into this category.
 
 Please note that this check is never performed for a package (or object type)
-specification.  And this check is less usefull if the scopes of declaration
+specification.  And this check is less useful if the scopes of declaration
 and reference are different. This check will thus performed only if the
 declaration and reference are in the same scope.
 
@@ -352,7 +352,7 @@ reference before the last assignment neither then it falls into the first
 category of unused variables because there are zero references.
 
 Please note that this check is never performed for a package (or object type)
-specification.  And this check is less usefull if the scopes of declaration
+specification.  And this check is less useful if the scopes of declaration
 and assignment are different. This check will thus performed only if the
 declaration and assignment are in the same scope.
 
@@ -556,4 +556,4 @@ warnings. The queries to implement those checks are not always easy to
 construct and it seems advisable to have them available as a table function
 and not just as a SQL script. That way the checks can be issued not only from
 an IDE but also from a Continuous Integration environment. That may be an argument for not 
-using another code checker that only is available thru an IDE. 
+using another code checker that is only available through an IDE. 
