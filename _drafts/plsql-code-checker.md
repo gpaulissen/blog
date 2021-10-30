@@ -557,3 +557,5 @@ construct and it seems advisable to have them available as a table function
 and not just as a SQL script. That way the checks can be issued not only from
 an IDE but also from a Continuous Integration environment. That may be an argument for not 
 using another code checker that is only available through an IDE. 
+
+I have made this functionality available as part of Oracle Tools. The pipelined package function `oracle_tools.cfg_install_pkg.format_compiler_messages` displays the compiler messages as described in this chapter. It is also part of the Oracle Tools Maven subsystem so users can use if from the command line or from a [Python based GUI](https://github.com/paulissoft/oracle-tools-gui).
