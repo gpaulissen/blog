@@ -32,3 +32,6 @@ group :jekyll_plugins do
   gem "jekyll-include-cache"
   gem "jekyll-remote-theme", versions['jekyll-remote-theme']
 end
+
+gem "addressable", ">= 2.8.0"
+gem "nokogiri", ">= 1.12.5"
